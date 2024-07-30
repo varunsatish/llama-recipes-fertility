@@ -91,7 +91,7 @@ Note that this may not be faster than the single GPU training: it depends on whe
 
 To try this on two GPUs, use `--nproc_per_node 2` instead of `4`. I found 4 GPUs to always be faster than 2 GPUs. 
 
-#### Full-param multi-GPU
+## Full-parameter fine-tuning on multiple GPUs
 To run full-parameter multi-GPU training, use the following command:
 ```bash
 NAME=multi_gpu_full_parameter
