@@ -15,6 +15,11 @@ class fertility_dataset:
     dataset: str =  "fertility_dataset"
     train_split: str = "train"
     test_split: str = "validation"
+    train_size: int = 10000
+    valid_size: int = 1000
+    use_parity: bool = False
+    num_extra_tokens: int = 0
+
 
 @dataclass
 class grammar_dataset:
@@ -29,6 +34,7 @@ class alpaca_dataset:
     train_split: str = "train"
     test_split: str = "val"
     data_path: str = "src/llama_recipes/datasets/alpaca_data.json"
+
 
 @dataclass
 class custom_dataset:

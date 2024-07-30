@@ -10,17 +10,18 @@ import numpy as np
 import pdb
 from itertools import product
 
-def create_dataset(size):
+def create_dataset(size, seed):
     features = []
     outputs = []
+    rs = np.random.RandomState(seed)
     for _ in range(size):
         # Randomly choose feature
-        if random.random() < 0.5:
+        if rs.rand() < 0.5:
             feature = "I want a child"
-            output = np.random.binomial(1, 0.9)
+            output = rs.binomial(1, 0.9)
         else:
             feature = "I don't want a child"
-            output = np.random.binomial(1, 0.1)
+            output = rs.binomial(1, 0.1)
         features.append(feature)
         outputs.append(str(output))
     return features, outputs
@@ -28,32 +29,29 @@ def create_dataset(size):
 def create_parity_dataset(length=8):
   def calculate_parity(binary_string):
     return str(binary_string.count('1') % 2)
-  # Generate all 2^8 combinations
+  # Generate all 2^length combinations
   all_combinations = [''.join(combo) for combo in product('01', repeat=length)]
   result = [calculate_parity(combo) for combo in all_combinations]
   return all_combinations, result  
 
 def get_preprocessed_fertility(dataset_config, tokenizer, split):
     # Create a dataset with 1000 samples
-    if split == "train":
-        size = 10000
-        # features, outputs = create_dataset(size)
+    if dataset_config.use_parity:
         features, outputs = create_parity_dataset(8)
     else:
-        size = 500
-        # features, outputs = create_dataset(size)
-        features, outputs = create_parity_dataset(8)
-    # Create a dataset with features and outputs, where 'dialogue' goes to features and 'summary' goes to outputs
-    dataset = datasets.Dataset.from_dict({"dialogue": features, "summary": outputs})
-    # dataset = datasets.load_dataset("samsum", split=split)
+        size = dataset_config.train_size if split == "train" else dataset_config.valid_size
+        features, outputs = create_dataset(size, seed=0 if split == "train" else 1)
+    if dataset_config.num_extra_tokens > 0:
+        features = [x + " " + " ".join(['<>'] * dataset_config.num_extra_tokens) for x in features]
+    dataset = datasets.Dataset.from_dict({"text": features, "output": outputs})
     prompt = (
-        f"Summarize this dialog:\n{{dialog}}\n---\nSummary:\n"
+        f"Predict 1 or 0:\n{{text}}\n---\nPrediction:\n"
     )
 
     def apply_prompt_template(sample):
         return {
-            "prompt": prompt.format(dialog=sample["dialogue"]),
-            "summary": sample["summary"],
+            "prompt": prompt.format(text=sample["text"]),
+            "output": sample["output"],
         }
 
     dataset = dataset.map(apply_prompt_template, remove_columns=list(dataset.features))
@@ -61,11 +59,11 @@ def get_preprocessed_fertility(dataset_config, tokenizer, split):
     def tokenize_add_label(sample):
         prompt = tokenizer.encode(tokenizer.bos_token + sample["prompt"], add_special_tokens=False)
         # summary = tokenizer.encode(sample["summary"] +  tokenizer.eos_token, add_special_tokens=False)
-        summary = tokenizer.encode(sample["summary"], add_special_tokens=False) # NOTE: no EOS token
+        output = tokenizer.encode(sample["output"], add_special_tokens=False) # NOTE: no EOS token
         sample = {
-            "input_ids": prompt + summary,
-            "attention_mask" : [1] * (len(prompt) + len(summary)),
-            "labels": [-100] * len(prompt) + summary,
+            "input_ids": prompt + output,
+            "attention_mask" : [1] * (len(prompt) + len(output)),
+            "labels": [-100] * len(prompt) + output,
             }
         return sample
 
