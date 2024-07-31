@@ -47,7 +47,6 @@ evaluate==0.4.2
 exceptiongroup==1.2.2
 executing==2.0.1
 face==22.0.0
-faiss-gpu==1.7.2
 fastapi==0.111.1
 fastapi-cli==0.0.4
 ffmpy==0.3.2
