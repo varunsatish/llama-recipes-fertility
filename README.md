@@ -129,11 +129,13 @@ First, make sure you navigate to `/scratch/gpfs/<USER>/` and then clone the repo
 7. `cd recipes/quickstart/finetuning`
 
 **if using interactive job**: 
+
 8. salloc --nodes=1 --ntasks=4 –-gres=gpu:4 --time=00:60:00 --mem=480G
 9. `export WANDB_MODE=offline`
 10. Now run: 
 
 **if using slurm job**:
+
 To be added
 
 ```bash
