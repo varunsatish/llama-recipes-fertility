@@ -114,3 +114,36 @@ If you want to explore the code and make some changes, the most relevant files a
 - `src/llama_recipes/datasets/fertility_dataset.py`: defining the dataset
 - `src/llama_recipes/finetuning.py`: the main script for training the model
 
+## Replicating on Della
+
+Note: to get this to work on Della, we made some changes to `requirements.txt`. We deleted `faiss-gpu` and used `pip install faiss-cpu`. This will be documented in the steps below:
+
+First, make sure you navigate to `/scratch/gpfs/<USER>/` and then clone the repository. This will create `/scratch/gpfs/<USER>/llama-recipes-fertility`. 
+
+1. `conda create --name llama-recipes pytorch torchvision pytorch-cuda=11.8 -c pytorch python=3.12`
+2.  delete `faiss-gpu` from `requirements.txt`
+3. `pip install -r llama-recipes-fertility/requirements.txt`
+4. `pip install faiss-cpu`
+5. `cd llama-recipes-fertility`
+6. `pip install -e`
+7. `cd recipes/quickstart/finetuning`
+8. **if using interactive job**: salloc --nodes=1 --ntasks=4 –-gres=gpu:4 --time=00:60:00 --mem=480G
+9. `export WANDB_MODE=offline`
+10. Now run: 
+
+```bash
+NAME=multi_gpu_peft
+export CUDA_VISIBLE_DEVICES=0,1,2,3
+FSDP_CPU_RAM_EFFICIENT_LOADING=1 ACCELERATE_USE_FSDP=1 torchrun --nnodes 1  \
+    --nproc_per_node 4  finetuning.py --enable_fsdp –-low_cpu_fsdp \
+    --quantization 4bit  \
+    --model_name models/Meta-Llama-3.1-8B-Instruct  \
+    --mixed_precision False --low_cpu_fsdp  \
+    --use_peft --peft_method lora --output_dir ckpts/$NAME  \
+    --num_epochs 3 --run_validation True  \
+    --batch_size_training 32 --lr 0.0003  \
+    --use_fast_kernels True --context_length 512  \
+    --batching_strategy packing --mixed_precision False  \
+    --dataset fertility_dataset  \
+    --use-wandb --wandb_config.name $NAME \
+```
