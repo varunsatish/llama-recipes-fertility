@@ -15,9 +15,11 @@ class fertility_dataset:
     dataset: str =  "fertility_dataset"
     train_split: str = "train"
     test_split: str = "validation"
-    train_size: int = 10000
+    train_size: int = 1000
     valid_size: int = 1000
     use_parity: bool = False
+    use_speed: bool = False
+    num_reps_if_speed: int = 100
     num_extra_tokens: int = 0
 
 

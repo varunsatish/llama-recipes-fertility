@@ -9,41 +9,31 @@ import random
 import numpy as np
 import pdb
 from itertools import product
+import string
 
-def create_dataset(size, seed, num_reps):
-    features = []
-    outputs = []
-    rs = np.random.RandomState(seed)
-    for _ in range(size):
-        # Randomly choose feature
-        if rs.rand() < 0.5:
-            feature = "I want a child" * num_reps
-            output = rs.binomial(1, 0.9)
-        else:
-            feature = "I don't want a child" * num_reps
-            output = rs.binomial(1, 0.1)
-        features.append(feature)
-        outputs.append(str(output))
+
+def generate_random_text(tokens_per_sample):
+
+    # Generate a large chunk of random text
+    chunk_size = tokens_per_sample * 4  # Estimating 4 characters per token on average
+    random_text = "".join(random.choices(string.ascii_letters + string.digits + string.punctuation + ' ', k=chunk_size))
+
+    return random_text
+
+def create_dataset(seed, tokens_per_sample, size):
+
+    # set seed 
+    rs = random.seed(seed)
+
+    features = generate_random_text(tokens_per_sample=tokens_per_sample)
+
+    outputs = [random.choice([0, 1]) for _ in range(size)]
     return features, outputs
 
-def create_parity_dataset(length=8):
-  def calculate_parity(binary_string):
-    return str(binary_string.count('1') % 2)
-  # Generate all 2^length combinations
-  all_combinations = [''.join(combo) for combo in product('01', repeat=length)]
-  result = [calculate_parity(combo) for combo in all_combinations]
-  return all_combinations, result  
 
-def get_preprocessed_fertility(dataset_config, tokenizer, split):
-    # Create a dataset with 1000 samples
-    num_reps = 1   # by default, text will be repeated once. For speed tests, we will repeat num_reps times
-    if dataset_config.use_parity:
-        features, outputs = create_parity_dataset(8)
-    else:
-        size = dataset_config.train_size if split == "train" else dataset_config.valid_size
-        if dataset_config.use_speed:
-            num_reps = dataset_config.num_reps_if_speed
-        features, outputs = create_dataset(size, seed=0 if split == "train" else 1, num_reps=num_reps)
+def get_preprocessed_speed(dataset_config, tokenizer, split):
+    size = dataset_config.train_size if split == "train" else dataset_config.valid_size
+    features, outputs = create_dataset(size, seed=0 if split == "train" else 1)
     if dataset_config.num_extra_tokens > 0:
         features = [x + " " + " ".join(['<>'] * dataset_config.num_extra_tokens) for x in features]
     dataset = datasets.Dataset.from_dict({"text": features, "output": outputs})

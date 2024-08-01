@@ -6,3 +6,4 @@ from llama_recipes.datasets.alpaca_dataset import InstructionDataset as get_alpa
 from llama_recipes.datasets.samsum_dataset import get_preprocessed_samsum as get_samsum_dataset
 from llama_recipes.datasets.toxicchat_dataset import get_llamaguard_toxicchat_dataset as get_llamaguard_toxicchat_dataset
 from llama_recipes.datasets.fertility_dataset import get_preprocessed_fertility as get_fertility_dataset
+from llama_recipes.datasets.speed_dataset import get_preprocessed_speed as get_speed_datset
