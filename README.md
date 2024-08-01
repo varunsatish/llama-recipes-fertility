@@ -134,10 +134,6 @@ First, make sure you navigate to `/scratch/gpfs/<USER>/` and then clone the repo
 9. `export WANDB_MODE=offline`
 10. Now run: 
 
-**if using slurm job**:
-
-To be added
-
 ```bash
 NAME=multi_gpu_peft
 export CUDA_VISIBLE_DEVICES=0,1,2,3
@@ -154,3 +150,7 @@ FSDP_CPU_RAM_EFFICIENT_LOADING=1 ACCELERATE_USE_FSDP=1 torchrun --nnodes 1  \
     --dataset fertility_dataset  \
     --use-wandb --wandb_config.name $NAME
 ```
+
+**if using slurm job**:
+
+To be added
