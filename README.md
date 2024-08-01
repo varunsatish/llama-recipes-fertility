@@ -127,9 +127,14 @@ First, make sure you navigate to `/scratch/gpfs/<USER>/` and then clone the repo
 5. `cd llama-recipes-fertility`
 6. `pip install -e`
 7. `cd recipes/quickstart/finetuning`
-8. **if using interactive job**: salloc --nodes=1 --ntasks=4 –-gres=gpu:4 --time=00:60:00 --mem=480G
+
+**if using interactive job**: 
+8. salloc --nodes=1 --ntasks=4 –-gres=gpu:4 --time=00:60:00 --mem=480G
 9. `export WANDB_MODE=offline`
 10. Now run: 
+
+**if using slurm job**:
+To be added
 
 ```bash
 NAME=multi_gpu_peft
@@ -145,5 +150,5 @@ FSDP_CPU_RAM_EFFICIENT_LOADING=1 ACCELERATE_USE_FSDP=1 torchrun --nnodes 1  \
     --use_fast_kernels True --context_length 512  \
     --batching_strategy packing --mixed_precision False  \
     --dataset fertility_dataset  \
-    --use-wandb --wandb_config.name $NAME \
+    --use-wandb --wandb_config.name $NAME
 ```
