@@ -25,7 +25,7 @@ module load anaconda3/2024.2
 
 If you want to run the fine-tuning code, you will need to ensure that you are in the `della-gpu` login node. 
 
-## Installing requirements and runnning the script
+## Installing requirements
 
 Create a folder named `cruijff` using `mkdir cruijff`. Because we will be downloading big files, you should ensure that you locate the folder in the part of the disk that is allocated for storage. For example, in Della this would be `/scratch/gpfs/<USER>`. 
 
@@ -61,6 +61,9 @@ huggingface-cli download meta-llama/Meta-Llama-3.1-8B-Instruct --local-dir model
 Set wandb to offline mode:
 
 `export WANDB_MODE=offline`
+
+
+## Running the script
 
 Then, run the folllowing code for a multi-GPU speed test using LoRA:
 
