@@ -90,6 +90,12 @@ You will first need to initialize an interactive slurm job.
 salloc --nodes=1 --ntasks=1 --gres=gpu:4 --time=60:00 --mem=480G
 ```
 
+Make sure to activate the environment:
+
+```bash
+source ~/.cruijff/bin/activate
+```
+
 Then, run the folllowing code for a multi-GPU speed test using LoRA:
 
 ```bash
@@ -102,7 +108,7 @@ FSDP_CPU_RAM_EFFICIENT_LOADING=1 ACCELERATE_USE_FSDP=1 torchrun --nnodes 1  \
     --mixed_precision False --low_cpu_fsdp  \
     --use_peft --peft_method lora --output_dir ckpts/$NAME  \
     --num_epochs 2 --run_validation True  \
-    --batch_size_training 64 --lr 0.0003  \
+    --batch_size_training 32 --lr 0.0003  \
     --use_fast_kernels True --context_length 512  \
     --batching_strategy packing --mixed_precision False  \
     --dataset fertility_dataset \
