@@ -82,7 +82,13 @@ Set wandb to offline mode:
 `export WANDB_MODE=offline`
 
 
-## Running the script
+## Running the script (minimum working example)
+
+You will first need to initialize an interactive slurm job.
+
+```bash
+salloc --nodes=1 --ntasks=1 --gres=gpu:4 --time=60:00 --mem=480G
+```
 
 Then, run the folllowing code for a multi-GPU speed test using LoRA:
 
