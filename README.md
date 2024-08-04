@@ -52,19 +52,27 @@ cd llama-recipes-fertility
 pip install -e .
 ```
 
-### Hugging Face Models
+Once you have created an environment and downloaded the packages, to activate the environment you only need to run:
 
-Make sure you have your Hugging Face access key ready. To obtain this, log into Hugging Face, navigate to "settings" and then "access tokens". Make sure you have write permissions on the token you generate if you need to create a new one. 
+```bash
+source ~/.cruijff/bin/activate
+```
+
+### Hugging Face models
+
+Make sure you have your Hugging Face access key ready. To obtain this, log into Hugging Face, navigate to "settings" and then "access tokens". 
 
 ```bash
 huggingface-cli login
 ```
 
-Follow the instructions to log in with your access key (you can select n for the question about Github access). Then install Llama 3:
+Follow the instructions to log in with your access key. You can select n for the question about Github access. 
+
+In this example, we will be downloading Llama-3.1-8B-Instruct. You can use the same process to download any other model on Hugging Face. 
 
 ```bash
 cd recipes/quickstart/finetuning
-mkdir models
+mkdir models/
 mkdir ckpts/
 huggingface-cli download meta-llama/Meta-Llama-3.1-8B-Instruct --local-dir models/Meta-Llama-3.1-8B-Instruct
 ```
