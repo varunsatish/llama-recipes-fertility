@@ -79,7 +79,9 @@ huggingface-cli download meta-llama/Meta-Llama-3.1-8B-Instruct --local-dir model
 
 Set wandb to offline mode:
 
-`export WANDB_MODE=offline`
+```bash
+export WANDB_MODE=offline
+```
 
 
 ## Running the script (minimum working example)
