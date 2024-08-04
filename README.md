@@ -2,13 +2,10 @@
 
 A fork of the [Llama recipes](https://github.com/meta-llama/llama-recipes) repository. See the [original repo](https://github.com/meta-llama/llama-recipes) for more information.
 
-## Getting started on Della
+## Getting started
 
-To set up the enviironment in Della, you first need to run this command in a terminal window:
+### Snellius
 
-`module load anaconda3/2024.2`
-
-## Getting started on Snellius 
 
 To set up the enviironment in Snellius, you first need to run this command in a terminal window:
 
@@ -16,6 +13,12 @@ To set up the enviironment in Snellius, you first need to run this command in a 
 module load 2023
 module load Python/3.11.3-GCCcore-12.3.0
 ```
+
+### Della  
+
+To set up the environment in Della, you first need to run this command in a terminal window:
+
+`module load anaconda3/2024.2`
 
 ## Installing requirements and runnning the script
 
