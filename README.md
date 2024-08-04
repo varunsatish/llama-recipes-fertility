@@ -29,7 +29,12 @@ If you want to run the fine-tuning code, you will need to ensure that you are in
 
 Create a folder named `cruijff` using `mkdir cruijff`. Because we will be downloading big files, you should ensure that you locate the folder in the part of the disk that is allocated for storage. For example, in Della this would be `/scratch/gpfs/<USER>`. 
 
-Install this repo from Github in this directory: `git clone https://github.com/varunsatish/llama-recipes-fertility`
+Navigate to `cruijff` and then install this repo from Github in this directory: 
+
+```bash
+cd cruijff
+git clone https://github.com/varunsatish/llama-recipes-fertility`
+```
 
 Install the requirements into a new virtual environment:
 
