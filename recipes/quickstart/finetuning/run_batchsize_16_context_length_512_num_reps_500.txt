@@ -1,0 +1,523 @@
+W0802 08:36:43.074000 22972440527168 torch/distributed/run.py:779] 
+W0802 08:36:43.074000 22972440527168 torch/distributed/run.py:779] *****************************************
+W0802 08:36:43.074000 22972440527168 torch/distributed/run.py:779] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0802 08:36:43.074000 22972440527168 torch/distributed/run.py:779] *****************************************
+/scratch/gpfs/vs3041/cruijff/llama-recipes-fertility/src/llama_recipes/model_checkpointing/checkpoint_handler.py:17: DeprecationWarning: `torch.distributed._shard.checkpoint` will be deprecated, use `torch.distributed.checkpoint` instead
+  from torch.distributed._shard.checkpoint import (
+/scratch/gpfs/vs3041/cruijff/llama-recipes-fertility/src/llama_recipes/model_checkpointing/checkpoint_handler.py:17: DeprecationWarning: `torch.distributed._shard.checkpoint` will be deprecated, use `torch.distributed.checkpoint` instead
+  from torch.distributed._shard.checkpoint import (
+/scratch/gpfs/vs3041/cruijff/llama-recipes-fertility/src/llama_recipes/model_checkpointing/checkpoint_handler.py:17: DeprecationWarning: `torch.distributed._shard.checkpoint` will be deprecated, use `torch.distributed.checkpoint` instead
+  from torch.distributed._shard.checkpoint import (
+/scratch/gpfs/vs3041/cruijff/llama-recipes-fertility/src/llama_recipes/model_checkpointing/checkpoint_handler.py:17: DeprecationWarning: `torch.distributed._shard.checkpoint` will be deprecated, use `torch.distributed.checkpoint` instead
+  from torch.distributed._shard.checkpoint import (
+Warning: unknown parameter num_reps
+Warning: unknown parameter train_size
+Warning: unknown parameter valid_size
+Warning: unknown parameter use_speed
+Warning: unknown parameter num_reps
+Warning: unknown parameter train_size
+Warning: unknown parameter valid_size
+Warning: unknown parameter use_speed
+Warning: unknown parameter num_reps
+Warning: unknown parameter train_size
+Warning: unknown parameter valid_size
+Warning: unknown parameter use_speed
+Warning: unknown parameter num_reps
+Warning: unknown parameter train_size
+Warning: unknown parameter valid_size
+Warning: unknown parameter use_speed
+Clearing GPU cache for all ranks
+--> Running with torch dist debug set to detail
+
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]wandb: Tracking run with wandb version 0.17.5
+wandb: W&B syncing is set to `offline` in this directory.  
+wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]
+Loading checkpoint shards:  25%|██▌       | 1/4 [00:12<00:36, 12.02s/it]
+Loading checkpoint shards:  25%|██▌       | 1/4 [00:17<00:53, 17.67s/it]
+Loading checkpoint shards:  25%|██▌       | 1/4 [00:17<00:53, 17.67s/it]
+Loading checkpoint shards:  25%|██▌       | 1/4 [00:17<00:53, 17.68s/it]
+Loading checkpoint shards:  50%|█████     | 2/4 [00:38<00:38, 19.41s/it]
+Loading checkpoint shards:  50%|█████     | 2/4 [00:38<00:38, 19.49s/it]
+Loading checkpoint shards:  50%|█████     | 2/4 [00:38<00:38, 19.49s/it]
+Loading checkpoint shards:  50%|█████     | 2/4 [00:32<00:34, 17.20s/it]
+Loading checkpoint shards:  75%|███████▌  | 3/4 [00:57<00:19, 19.50s/it]
+Loading checkpoint shards:  75%|███████▌  | 3/4 [00:58<00:19, 19.55s/it]
+Loading checkpoint shards:  75%|███████▌  | 3/4 [00:58<00:19, 19.57s/it]
+Loading checkpoint shards:  75%|███████▌  | 3/4 [00:52<00:18, 18.32s/it]
+Loading checkpoint shards: 100%|██████████| 4/4 [00:57<00:00, 12.95s/it]
+Loading checkpoint shards: 100%|██████████| 4/4 [00:57<00:00, 14.30s/it]
+
+Loading checkpoint shards: 100%|██████████| 4/4 [01:02<00:00, 13.72s/it]
+Loading checkpoint shards: 100%|██████████| 4/4 [01:02<00:00, 15.70s/it]
+
+Loading checkpoint shards: 100%|██████████| 4/4 [01:02<00:00, 13.71s/it]
+Loading checkpoint shards: 100%|██████████| 4/4 [01:02<00:00, 15.71s/it]
+
+Loading checkpoint shards: 100%|██████████| 4/4 [01:02<00:00, 13.73s/it]
+Loading checkpoint shards: 100%|██████████| 4/4 [01:02<00:00, 15.71s/it]
+--> Model models/Meta-Llama-3.1-8B-Instruct
+
+--> models/Meta-Llama-3.1-8B-Instruct has 1050.939392 Million params
+
+trainable params: 3,407,872 || all params: 8,033,669,120 || trainable%: 0.0424
+trainable params: 3,407,872 || all params: 8,033,669,120 || trainable%: 0.0424
+trainable params: 3,407,872 || all params: 8,033,669,120 || trainable%: 0.0424
+trainable params: 3,407,872 || all params: 8,033,669,120 || trainable%: 0.0424
+--> applying fsdp activation checkpointing...
+--> applying fsdp activation checkpointing...
+--> applying fsdp activation checkpointing...
+--> applying fsdp activation checkpointing...
+
+Map:   0%|          | 0/1000 [00:00<?, ? examples/s]
+Map:   0%|          | 0/1000 [00:00<?, ? examples/s]
+Map:   0%|          | 0/1000 [00:00<?, ? examples/s]
+Map:   0%|          | 0/1000 [00:00<?, ? examples/s]
+Map: 100%|██████████| 1000/1000 [00:00<00:00, 34644.20 examples/s]
+
+Map: 100%|██████████| 1000/1000 [00:00<00:00, 34561.41 examples/s]
+
+Map: 100%|██████████| 1000/1000 [00:00<00:00, 34653.36 examples/s]
+
+Map: 100%|██████████| 1000/1000 [00:00<00:00, 35953.54 examples/s]
+
+Map:   0%|          | 0/1000 [00:00<?, ? examples/s]
+Map:   0%|          | 0/1000 [00:00<?, ? examples/s]
+Map:   0%|          | 0/1000 [00:00<?, ? examples/s]
+Map:   0%|          | 0/1000 [00:00<?, ? examples/s]
+Map:  15%|█▌        | 154/1000 [00:00<00:00, 1524.88 examples/s]
+Map:  15%|█▌        | 153/1000 [00:00<00:00, 1516.39 examples/s]
+Map:  15%|█▌        | 151/1000 [00:00<00:00, 1492.92 examples/s]
+Map:  15%|█▌        | 153/1000 [00:00<00:00, 1518.65 examples/s]
+Map:  31%|███       | 312/1000 [00:00<00:00, 1550.06 examples/s]
+Map:  31%|███       | 309/1000 [00:00<00:00, 1534.60 examples/s]
+Map:  31%|███       | 309/1000 [00:00<00:00, 1532.60 examples/s]
+Map:  31%|███       | 309/1000 [00:00<00:00, 1535.68 examples/s]
+Map:  47%|████▋     | 471/1000 [00:00<00:00, 1564.53 examples/s]
+Map:  47%|████▋     | 466/1000 [00:00<00:00, 1544.36 examples/s]
+Map:  47%|████▋     | 467/1000 [00:00<00:00, 1546.65 examples/s]
+Map:  47%|████▋     | 467/1000 [00:00<00:00, 1548.82 examples/s]
+Map:  63%|██████▎   | 631/1000 [00:00<00:00, 1573.42 examples/s]
+Map:  62%|██████▎   | 625/1000 [00:00<00:00, 1555.61 examples/s]
+Map:  63%|██████▎   | 626/1000 [00:00<00:00, 1559.61 examples/s]
+Map:  62%|██████▎   | 625/1000 [00:00<00:00, 1557.45 examples/s]
+Map:  78%|███████▊  | 782/1000 [00:00<00:00, 1557.68 examples/s]
+Map:  78%|███████▊  | 781/1000 [00:00<00:00, 1554.07 examples/s]
+Map:  86%|████████▋ | 865/1000 [00:00<00:00, 1563.64 examples/s]
+Map:  85%|████████▌ | 854/1000 [00:00<00:00, 1540.02 examples/s]
+Map: 100%|██████████| 1000/1000 [00:00<00:00, 1334.54 examples/s]
+
+Map:   0%|          | 0/100 [00:00<?, ? examples/s]
+Map: 100%|██████████| 1000/1000 [00:00<00:00, 1177.86 examples/s]
+Map: 100%|██████████| 1000/1000 [00:00<00:00, 1326.30 examples/s]
+
+Map: 100%|██████████| 1000/1000 [00:00<00:00, 1324.83 examples/s]
+--> Training Set Length = 1000
+
+Map: 100%|██████████| 100/100 [00:00<00:00, 24837.47 examples/s]
+
+Map:   0%|          | 0/100 [00:00<?, ? examples/s]
+Map:   0%|          | 0/100 [00:00<?, ? examples/s]
+Map: 100%|██████████| 1000/1000 [00:00<00:00, 1161.22 examples/s]
+Map: 100%|██████████| 100/100 [00:00<00:00, 24201.17 examples/s]
+
+Map: 100%|██████████| 100/100 [00:00<00:00, 25019.71 examples/s]
+
+Map: 100%|██████████| 1000/1000 [00:00<00:00, 1315.80 examples/s]
+
+Map:   0%|          | 0/100 [00:00<?, ? examples/s]
+Map: 100%|██████████| 100/100 [00:00<00:00, 24961.64 examples/s]
+
+Map:   0%|          | 0/100 [00:00<?, ? examples/s]
+Map:   0%|          | 0/100 [00:00<?, ? examples/s]
+Map:   0%|          | 0/100 [00:00<?, ? examples/s]
+Map:   0%|          | 0/100 [00:00<?, ? examples/s]
+Map: 100%|██████████| 100/100 [00:00<00:00, 1357.75 examples/s]
+
+Map: 100%|██████████| 100/100 [00:00<00:00, 1360.02 examples/s]
+
+Map: 100%|██████████| 100/100 [00:00<00:00, 1361.50 examples/s]
+--> Validation Set Length = 100
+
+Preprocessing dataset:   0%|          | 0/1000 [00:00<?, ?it/s]
+Preprocessing dataset:   0%|          | 0/1000 [00:00<?, ?it/s]
+Map: 100%|██████████| 100/100 [00:00<00:00, 1364.09 examples/s]
+
+Preprocessing dataset:   0%|          | 0/1000 [00:00<?, ?it/s]
+Preprocessing dataset:   0%|          | 0/1000 [00:00<?, ?it/s]
+Preprocessing dataset:  23%|██▎       | 229/1000 [00:00<00:00, 2289.91it/s]
+Preprocessing dataset:  22%|██▎       | 225/1000 [00:00<00:00, 2242.55it/s]
+Preprocessing dataset:  22%|██▎       | 225/1000 [00:00<00:00, 2243.48it/s]
+Preprocessing dataset:  23%|██▎       | 228/1000 [00:00<00:00, 2274.90it/s]
+Preprocessing dataset:  46%|████▌     | 458/1000 [00:00<00:00, 2272.91it/s]
+Preprocessing dataset:  45%|████▌     | 450/1000 [00:00<00:00, 2230.29it/s]
+Preprocessing dataset:  45%|████▌     | 450/1000 [00:00<00:00, 2214.36it/s]
+Preprocessing dataset:  46%|████▌     | 456/1000 [00:00<00:00, 2252.04it/s]
+Preprocessing dataset:  69%|██████▊   | 686/1000 [00:00<00:00, 2264.51it/s]
+Preprocessing dataset:  67%|██████▋   | 674/1000 [00:00<00:00, 2221.35it/s]
+Preprocessing dataset:  67%|██████▋   | 672/1000 [00:00<00:00, 2202.86it/s]
+Preprocessing dataset:  68%|██████▊   | 682/1000 [00:00<00:00, 2245.16it/s]
+Preprocessing dataset:  91%|█████████▏| 913/1000 [00:00<00:00, 2247.50it/s]
+Preprocessing dataset:  90%|████████▉ | 897/1000 [00:00<00:00, 2212.16it/s]
+Preprocessing dataset:  89%|████████▉ | 893/1000 [00:00<00:00, 2199.82it/s]
+Preprocessing dataset:  91%|█████████ | 907/1000 [00:00<00:00, 2232.91it/s]
+Preprocessing dataset: 100%|██████████| 1000/1000 [00:00<00:00, 2258.45it/s]
+
+Preprocessing dataset:   0%|          | 0/100 [00:00<?, ?it/s]
+Preprocessing dataset: 100%|██████████| 1000/1000 [00:00<00:00, 2216.74it/s]
+
+Preprocessing dataset:   0%|          | 0/100 [00:00<?, ?it/s]
+Preprocessing dataset: 100%|██████████| 1000/1000 [00:00<00:00, 2240.99it/s]
+
+Preprocessing dataset: 100%|██████████| 1000/1000 [00:00<00:00, 2197.76it/s]
+
+Preprocessing dataset:   0%|          | 0/100 [00:00<?, ?it/s]
+Preprocessing dataset:   0%|          | 0/100 [00:00<?, ?it/s]
+Preprocessing dataset: 100%|██████████| 100/100 [00:00<00:00, 2261.25it/s]
+--> Num of Validation Set Batches loaded = 24
+
+Preprocessing dataset: 100%|██████████| 100/100 [00:00<00:00, 2220.83it/s]
+--> Num of Validation Set Batches loaded = 24
+
+Preprocessing dataset: 100%|██████████| 100/100 [00:00<00:00, 2258.09it/s]
+--> Num of Validation Set Batches loaded = 24
+
+Preprocessing dataset: 100%|██████████| 100/100 [00:00<00:00, 2217.73it/s]
+--> Num of Validation Set Batches loaded = 24
+/home/vs3041/.new_recipes/lib/python3.11/site-packages/torch/cuda/memory.py:343: FutureWarning: torch.cuda.reset_max_memory_allocated now calls torch.cuda.reset_peak_memory_stats, which resets /all/ peak memory stats.
+  warnings.warn(
+/home/vs3041/.new_recipes/lib/python3.11/site-packages/torch/cuda/memory.py:343: FutureWarning: torch.cuda.reset_max_memory_allocated now calls torch.cuda.reset_peak_memory_stats, which resets /all/ peak memory stats.
+  warnings.warn(
+/home/vs3041/.new_recipes/lib/python3.11/site-packages/torch/cuda/memory.py:343: FutureWarning: torch.cuda.reset_max_memory_allocated now calls torch.cuda.reset_peak_memory_stats, which resets /all/ peak memory stats.
+  warnings.warn(
+
+Training Epoch: 1:   0%|[34m          [0m| 0/15 [00:00<?, ?it/s]/home/vs3041/.new_recipes/lib/python3.11/site-packages/torch/cuda/memory.py:343: FutureWarning: torch.cuda.reset_max_memory_allocated now calls torch.cuda.reset_peak_memory_stats, which resets /all/ peak memory stats.
+  warnings.warn(
+
+Training Epoch: 1:   0%|[34m          [0m| 0/15 [00:00<?, ?it/s]
+Training Epoch: 1:   0%|[34m          [0m| 0/15 [00:00<?, ?it/s]
+Training Epoch: 1:   0%|[34m          [0m| 0/15 [00:00<?, ?it/s]huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+/home/vs3041/.new_recipes/lib/python3.11/site-packages/torch/utils/checkpoint.py:295: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with torch.enable_grad(), device_autocast_ctx, torch.cpu.amp.autocast(**ctx.cpu_autocast_kwargs):  # type: ignore[attr-defined]
+/home/vs3041/.new_recipes/lib/python3.11/site-packages/torch/utils/checkpoint.py:295: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with torch.enable_grad(), device_autocast_ctx, torch.cpu.amp.autocast(**ctx.cpu_autocast_kwargs):  # type: ignore[attr-defined]
+/home/vs3041/.new_recipes/lib/python3.11/site-packages/torch/utils/checkpoint.py:295: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with torch.enable_grad(), device_autocast_ctx, torch.cpu.amp.autocast(**ctx.cpu_autocast_kwargs):  # type: ignore[attr-defined]
+/home/vs3041/.new_recipes/lib/python3.11/site-packages/torch/utils/checkpoint.py:295: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with torch.enable_grad(), device_autocast_ctx, torch.cpu.amp.autocast(**ctx.cpu_autocast_kwargs):  # type: ignore[attr-defined]
+/home/vs3041/.new_recipes/lib/python3.11/site-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]
+/home/vs3041/.new_recipes/lib/python3.11/site-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]
+/home/vs3041/.new_recipes/lib/python3.11/site-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]
+/home/vs3041/.new_recipes/lib/python3.11/site-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]
+
+Training Epoch: 1:   7%|[34m▋         [0m| 1/15 [00:11<02:34, 11.02s/it]
+Training Epoch: 1/1, step 0/15 completed (loss: 4.0033440589904785):   7%|[34m▋         [0m| 1/15 [00:11<02:34, 11.02s/it]
+Training Epoch: 1:   7%|[34m▋         [0m| 1/15 [00:11<02:34, 11.06s/it]
+Training Epoch: 1/1, step 0/15 completed (loss: 4.440132141113281):   7%|[34m▋         [0m| 1/15 [00:11<02:34, 11.06s/it]
+Training Epoch: 1:   7%|[34m▋         [0m| 1/15 [00:11<02:35, 11.07s/it]
+Training Epoch: 1/1, step 0/15 completed (loss: 4.378519535064697):   7%|[34m▋         [0m| 1/15 [00:11<02:35, 11.07s/it]
+Training Epoch: 1:   7%|[34m▋         [0m| 1/15 [00:11<02:35, 11.14s/it]
+Training Epoch: 1/1, step 0/15 completed (loss: 4.336174488067627):   7%|[34m▋         [0m| 1/15 [00:11<02:35, 11.14s/it]
+Training Epoch: 1/1, step 0/15 completed (loss: 4.0033440589904785):  13%|[34m█▎        [0m| 2/15 [00:17<01:47,  8.29s/it]
+Training Epoch: 1/1, step 1/15 completed (loss: 2.910339593887329):  13%|[34m█▎        [0m| 2/15 [00:17<01:47,  8.29s/it] 
+Training Epoch: 1/1, step 0/15 completed (loss: 4.336174488067627):  13%|[34m█▎        [0m| 2/15 [00:17<01:47,  8.29s/it]
+Training Epoch: 1/1, step 1/15 completed (loss: 2.697009801864624):  13%|[34m█▎        [0m| 2/15 [00:17<01:47,  8.29s/it]
+Training Epoch: 1/1, step 0/15 completed (loss: 4.440132141113281):  13%|[34m█▎        [0m| 2/15 [00:17<01:47,  8.29s/it]
+Training Epoch: 1/1, step 1/15 completed (loss: 2.598503828048706):  13%|[34m█▎        [0m| 2/15 [00:17<01:47,  8.29s/it]
+Training Epoch: 1/1, step 0/15 completed (loss: 4.378519535064697):  13%|[34m█▎        [0m| 2/15 [00:17<01:47,  8.30s/it]
+Training Epoch: 1/1, step 1/15 completed (loss: 2.838501214981079):  13%|[34m█▎        [0m| 2/15 [00:17<01:47,  8.30s/it]
+Training Epoch: 1/1, step 1/15 completed (loss: 2.838501214981079):  20%|[34m██        [0m| 3/15 [00:25<01:35,  7.97s/it]
+Training Epoch: 1/1, step 1/15 completed (loss: 2.598503828048706):  20%|[34m██        [0m| 3/15 [00:25<01:35,  7.98s/it]
+Training Epoch: 1/1, step 1/15 completed (loss: 2.910339593887329):  20%|[34m██        [0m| 3/15 [00:25<01:35,  7.99s/it]
+Training Epoch: 1/1, step 2/15 completed (loss: 1.115082859992981):  20%|[34m██        [0m| 3/15 [00:25<01:35,  7.99s/it]
+Training Epoch: 1/1, step 1/15 completed (loss: 2.697009801864624):  20%|[34m██        [0m| 3/15 [00:25<01:35,  7.99s/it]
+Training Epoch: 1/1, step 2/15 completed (loss: 1.5575922727584839):  20%|[34m██        [0m| 3/15 [00:25<01:35,  7.99s/it]
+Training Epoch: 1/1, step 2/15 completed (loss: 1.26150643825531):  20%|[34m██        [0m| 3/15 [00:25<01:35,  7.98s/it] 
+Training Epoch: 1/1, step 2/15 completed (loss: 1.2608799934387207):  20%|[34m██        [0m| 3/15 [00:25<01:35,  7.97s/it]
+Training Epoch: 1/1, step 2/15 completed (loss: 1.2608799934387207):  27%|[34m██▋       [0m| 4/15 [00:30<01:18,  7.17s/it]
+Training Epoch: 1/1, step 2/15 completed (loss: 1.5575922727584839):  27%|[34m██▋       [0m| 4/15 [00:30<01:18,  7.17s/it]
+Training Epoch: 1/1, step 2/15 completed (loss: 1.26150643825531):  27%|[34m██▋       [0m| 4/15 [00:30<01:18,  7.17s/it]
+Training Epoch: 1/1, step 3/15 completed (loss: 0.6539992690086365):  27%|[34m██▋       [0m| 4/15 [00:31<01:18,  7.17s/it]
+Training Epoch: 1/1, step 3/15 completed (loss: 0.7484787702560425):  27%|[34m██▋       [0m| 4/15 [00:30<01:18,  7.17s/it]
+Training Epoch: 1/1, step 2/15 completed (loss: 1.115082859992981):  27%|[34m██▋       [0m| 4/15 [00:30<01:19,  7.19s/it]
+Training Epoch: 1/1, step 3/15 completed (loss: 2.000514507293701):  27%|[34m██▋       [0m| 4/15 [00:30<01:19,  7.19s/it]
+Training Epoch: 1/1, step 3/15 completed (loss: 1.083274483680725):  27%|[34m██▋       [0m| 4/15 [00:31<01:18,  7.17s/it] 
+Training Epoch: 1/1, step 3/15 completed (loss: 1.083274483680725):  33%|[34m███▎      [0m| 5/15 [00:36<01:05,  6.58s/it]
+Training Epoch: 1/1, step 3/15 completed (loss: 0.6539992690086365):  33%|[34m███▎      [0m| 5/15 [00:36<01:05,  6.58s/it]
+Training Epoch: 1/1, step 4/15 completed (loss: 0.4501573145389557):  33%|[34m███▎      [0m| 5/15 [00:36<01:05,  6.58s/it]
+Training Epoch: 1/1, step 4/15 completed (loss: 0.6334930658340454):  33%|[34m███▎      [0m| 5/15 [00:36<01:05,  6.58s/it]
+Training Epoch: 1/1, step 3/15 completed (loss: 0.7484787702560425):  33%|[34m███▎      [0m| 5/15 [00:36<01:05,  6.59s/it]
+Training Epoch: 1/1, step 4/15 completed (loss: 0.4932669997215271):  33%|[34m███▎      [0m| 5/15 [00:36<01:05,  6.59s/it]
+Training Epoch: 1/1, step 3/15 completed (loss: 2.000514507293701):  33%|[34m███▎      [0m| 5/15 [00:36<01:05,  6.59s/it]
+Training Epoch: 1/1, step 4/15 completed (loss: 0.42699870467185974):  33%|[34m███▎      [0m| 5/15 [00:36<01:05,  6.59s/it]
+Training Epoch: 1/1, step 4/15 completed (loss: 0.6334930658340454):  40%|[34m████      [0m| 6/15 [00:43<01:00,  6.67s/it]
+Training Epoch: 1/1, step 4/15 completed (loss: 0.42699870467185974):  40%|[34m████      [0m| 6/15 [00:43<01:00,  6.67s/it]
+Training Epoch: 1/1, step 5/15 completed (loss: 0.8373468518257141):  40%|[34m████      [0m| 6/15 [00:43<01:00,  6.67s/it] 
+Training Epoch: 1/1, step 4/15 completed (loss: 0.4501573145389557):  40%|[34m████      [0m| 6/15 [00:43<01:00,  6.68s/it]
+Training Epoch: 1/1, step 5/15 completed (loss: 0.432989239692688):  40%|[34m████      [0m| 6/15 [00:43<01:00,  6.68s/it] 
+Training Epoch: 1/1, step 4/15 completed (loss: 0.4932669997215271):  40%|[34m████      [0m| 6/15 [00:43<01:00,  6.68s/it]
+Training Epoch: 1/1, step 5/15 completed (loss: 0.8862918615341187):  40%|[34m████      [0m| 6/15 [00:43<01:00,  6.68s/it]
+Training Epoch: 1/1, step 5/15 completed (loss: 0.9254598021507263):  40%|[34m████      [0m| 6/15 [00:43<01:00,  6.67s/it]
+Training Epoch: 1/1, step 5/15 completed (loss: 0.432989239692688):  47%|[34m████▋     [0m| 7/15 [00:49<00:52,  6.59s/it]
+Training Epoch: 1/1, step 5/15 completed (loss: 0.9254598021507263):  47%|[34m████▋     [0m| 7/15 [00:49<00:52,  6.59s/it]
+Training Epoch: 1/1, step 5/15 completed (loss: 0.8373468518257141):  47%|[34m████▋     [0m| 7/15 [00:49<00:52,  6.59s/it]
+Training Epoch: 1/1, step 6/15 completed (loss: 0.36814841628074646):  47%|[34m████▋     [0m| 7/15 [00:49<00:52,  6.59s/it]
+Training Epoch: 1/1, step 6/15 completed (loss: 0.6117086410522461):  47%|[34m████▋     [0m| 7/15 [00:49<00:52,  6.59s/it]
+Training Epoch: 1/1, step 5/15 completed (loss: 0.8862918615341187):  47%|[34m████▋     [0m| 7/15 [00:49<00:52,  6.59s/it]
+Training Epoch: 1/1, step 6/15 completed (loss: 0.40014907717704773):  47%|[34m████▋     [0m| 7/15 [00:49<00:52,  6.59s/it]
+Training Epoch: 1/1, step 6/15 completed (loss: 0.5442080497741699):  47%|[34m████▋     [0m| 7/15 [00:49<00:52,  6.59s/it]
+Training Epoch: 1/1, step 6/15 completed (loss: 0.5442080497741699):  53%|[34m█████▎    [0m| 8/15 [00:55<00:44,  6.38s/it]
+Training Epoch: 1/1, step 6/15 completed (loss: 0.36814841628074646):  53%|[34m█████▎    [0m| 8/15 [00:55<00:44,  6.38s/it]
+Training Epoch: 1/1, step 6/15 completed (loss: 0.40014907717704773):  53%|[34m█████▎    [0m| 8/15 [00:55<00:44,  6.38s/it]
+Training Epoch: 1/1, step 7/15 completed (loss: 0.47317925095558167):  53%|[34m█████▎    [0m| 8/15 [00:55<00:44,  6.38s/it]
+Training Epoch: 1/1, step 7/15 completed (loss: 0.626880943775177):  53%|[34m█████▎    [0m| 8/15 [00:55<00:44,  6.38s/it] 
+Training Epoch: 1/1, step 7/15 completed (loss: 0.384482204914093):  53%|[34m█████▎    [0m| 8/15 [00:55<00:44,  6.38s/it]  
+Training Epoch: 1/1, step 6/15 completed (loss: 0.6117086410522461):  53%|[34m█████▎    [0m| 8/15 [00:55<00:44,  6.38s/it]
+Training Epoch: 1/1, step 7/15 completed (loss: 0.3654998540878296):  53%|[34m█████▎    [0m| 8/15 [00:55<00:44,  6.38s/it]
+Training Epoch: 1/1, step 7/15 completed (loss: 0.3654998540878296):  60%|[34m██████    [0m| 9/15 [01:01<00:37,  6.24s/it]
+Training Epoch: 1/1, step 7/15 completed (loss: 0.384482204914093):  60%|[34m██████    [0m| 9/15 [01:01<00:37,  6.24s/it]
+Training Epoch: 1/1, step 7/15 completed (loss: 0.47317925095558167):  60%|[34m██████    [0m| 9/15 [01:01<00:37,  6.24s/it]
+Training Epoch: 1/1, step 8/15 completed (loss: 0.5028855204582214):  60%|[34m██████    [0m| 9/15 [01:01<00:37,  6.24s/it] 
+Training Epoch: 1/1, step 8/15 completed (loss: 0.42856618762016296):  60%|[34m██████    [0m| 9/15 [01:01<00:37,  6.24s/it]
+Training Epoch: 1/1, step 8/15 completed (loss: 0.22766168415546417):  60%|[34m██████    [0m| 9/15 [01:01<00:37,  6.24s/it]
+Training Epoch: 1/1, step 7/15 completed (loss: 0.626880943775177):  60%|[34m██████    [0m| 9/15 [01:01<00:37,  6.24s/it]
+Training Epoch: 1/1, step 8/15 completed (loss: 0.3164120316505432):  60%|[34m██████    [0m| 9/15 [01:01<00:37,  6.24s/it]
+Training Epoch: 1/1, step 8/15 completed (loss: 0.22766168415546417):  67%|[34m██████▋   [0m| 10/15 [01:07<00:30,  6.11s/it]
+Training Epoch: 1/1, step 8/15 completed (loss: 0.42856618762016296):  67%|[34m██████▋   [0m| 10/15 [01:07<00:30,  6.11s/it]
+Training Epoch: 1/1, step 9/15 completed (loss: 0.28496047854423523):  67%|[34m██████▋   [0m| 10/15 [01:07<00:30,  6.11s/it]
+Training Epoch: 1/1, step 9/15 completed (loss: 0.13959112763404846):  67%|[34m██████▋   [0m| 10/15 [01:07<00:30,  6.11s/it]
+Training Epoch: 1/1, step 8/15 completed (loss: 0.3164120316505432):  67%|[34m██████▋   [0m| 10/15 [01:07<00:30,  6.11s/it]
+Training Epoch: 1/1, step 9/15 completed (loss: 0.14422591030597687):  67%|[34m██████▋   [0m| 10/15 [01:07<00:30,  6.11s/it]
+Training Epoch: 1/1, step 8/15 completed (loss: 0.5028855204582214):  67%|[34m██████▋   [0m| 10/15 [01:07<00:30,  6.11s/it]
+Training Epoch: 1/1, step 9/15 completed (loss: 0.3817864954471588):  67%|[34m██████▋   [0m| 10/15 [01:07<00:30,  6.11s/it]
+Training Epoch: 1/1, step 9/15 completed (loss: 0.13959112763404846):  73%|[34m███████▎  [0m| 11/15 [01:13<00:24,  6.08s/it]
+Training Epoch: 1/1, step 9/15 completed (loss: 0.28496047854423523):  73%|[34m███████▎  [0m| 11/15 [01:13<00:24,  6.08s/it]
+Training Epoch: 1/1, step 9/15 completed (loss: 0.14422591030597687):  73%|[34m███████▎  [0m| 11/15 [01:13<00:24,  6.08s/it]
+Training Epoch: 1/1, step 10/15 completed (loss: 0.2548547089099884):  73%|[34m███████▎  [0m| 11/15 [01:13<00:24,  6.08s/it]
+Training Epoch: 1/1, step 10/15 completed (loss: 0.13425107300281525):  73%|[34m███████▎  [0m| 11/15 [01:13<00:24,  6.08s/it]
+Training Epoch: 1/1, step 10/15 completed (loss: 0.03932680934667587):  73%|[34m███████▎  [0m| 11/15 [01:13<00:24,  6.08s/it]
+Training Epoch: 1/1, step 9/15 completed (loss: 0.3817864954471588):  73%|[34m███████▎  [0m| 11/15 [01:13<00:24,  6.08s/it]
+Training Epoch: 1/1, step 10/15 completed (loss: 0.46289142966270447):  73%|[34m███████▎  [0m| 11/15 [01:13<00:24,  6.08s/it]
+Training Epoch: 1/1, step 10/15 completed (loss: 0.46289142966270447):  80%|[34m████████  [0m| 12/15 [01:19<00:17,  5.96s/it]
+Training Epoch: 1/1, step 10/15 completed (loss: 0.2548547089099884):  80%|[34m████████  [0m| 12/15 [01:19<00:17,  5.96s/it]
+Training Epoch: 1/1, step 11/15 completed (loss: 0.5230883359909058):  80%|[34m████████  [0m| 12/15 [01:19<00:17,  5.96s/it] 
+Training Epoch: 1/1, step 11/15 completed (loss: 0.01830422878265381):  80%|[34m████████  [0m| 12/15 [01:19<00:17,  5.96s/it]
+Training Epoch: 1/1, step 10/15 completed (loss: 0.13425107300281525):  80%|[34m████████  [0m| 12/15 [01:19<00:17,  5.96s/it]
+Training Epoch: 1/1, step 11/15 completed (loss: 0.8927498459815979):  80%|[34m████████  [0m| 12/15 [01:19<00:17,  5.96s/it] 
+Training Epoch: 1/1, step 10/15 completed (loss: 0.03932680934667587):  80%|[34m████████  [0m| 12/15 [01:19<00:17,  5.96s/it]
+Training Epoch: 1/1, step 11/15 completed (loss: 0.2212773859500885):  80%|[34m████████  [0m| 12/15 [01:19<00:17,  5.96s/it] 
+Training Epoch: 1/1, step 11/15 completed (loss: 0.01830422878265381):  87%|[34m████████▋ [0m| 13/15 [01:24<00:11,  5.81s/it]
+Training Epoch: 1/1, step 11/15 completed (loss: 0.5230883359909058):  87%|[34m████████▋ [0m| 13/15 [01:24<00:11,  5.82s/it]
+Training Epoch: 1/1, step 11/15 completed (loss: 0.8927498459815979):  87%|[34m████████▋ [0m| 13/15 [01:24<00:11,  5.82s/it]
+Training Epoch: 1/1, step 12/15 completed (loss: 0.8372648358345032):  87%|[34m████████▋ [0m| 13/15 [01:24<00:11,  5.82s/it]
+Training Epoch: 1/1, step 12/15 completed (loss: 0.2784535586833954):  87%|[34m████████▋ [0m| 13/15 [01:24<00:11,  5.82s/it]
+Training Epoch: 1/1, step 11/15 completed (loss: 0.2212773859500885):  87%|[34m████████▋ [0m| 13/15 [01:24<00:11,  5.82s/it]
+Training Epoch: 1/1, step 12/15 completed (loss: 0.5807105898857117):  87%|[34m████████▋ [0m| 13/15 [01:24<00:11,  5.82s/it]
+Training Epoch: 1/1, step 12/15 completed (loss: 0.41865992546081543):  87%|[34m████████▋ [0m| 13/15 [01:24<00:11,  5.81s/it]
+Training Epoch: 1/1, step 12/15 completed (loss: 0.5807105898857117):  93%|[34m█████████▎[0m| 14/15 [01:30<00:05,  5.78s/it]
+Training Epoch: 1/1, step 12/15 completed (loss: 0.8372648358345032):  93%|[34m█████████▎[0m| 14/15 [01:30<00:05,  5.78s/it]
+Training Epoch: 1/1, step 12/15 completed (loss: 0.2784535586833954):  93%|[34m█████████▎[0m| 14/15 [01:30<00:05,  5.78s/it]
+Training Epoch: 1/1, step 13/15 completed (loss: 0.07412511110305786):  93%|[34m█████████▎[0m| 14/15 [01:30<00:05,  5.78s/it]
+Training Epoch: 1/1, step 12/15 completed (loss: 0.41865992546081543):  93%|[34m█████████▎[0m| 14/15 [01:30<00:05,  5.78s/it]
+Training Epoch: 1/1, step 13/15 completed (loss: 0.23960015177726746):  93%|[34m█████████▎[0m| 14/15 [01:30<00:05,  5.78s/it]
+Training Epoch: 1/1, step 13/15 completed (loss: 0.9049584269523621):  93%|[34m█████████▎[0m| 14/15 [01:30<00:05,  5.78s/it]
+Training Epoch: 1/1, step 13/15 completed (loss: 0.23293203115463257):  93%|[34m█████████▎[0m| 14/15 [01:30<00:05,  5.78s/it]
+Training Epoch: 1/1, step 13/15 completed (loss: 0.9049584269523621): 100%|[34m██████████[0m| 15/15 [01:35<00:00,  5.68s/it]
+Training Epoch: 1/1, step 13/15 completed (loss: 0.23960015177726746): 100%|[34m██████████[0m| 15/15 [01:35<00:00,  5.68s/it]
+Training Epoch: 1/1, step 13/15 completed (loss: 0.07412511110305786): 100%|[34m██████████[0m| 15/15 [01:35<00:00,  5.69s/it]
+Training Epoch: 1/1, step 14/15 completed (loss: 0.43682861328125): 100%|[34m██████████[0m| 15/15 [01:35<00:00,  5.69s/it]   
+Training Epoch: 1/1, step 13/15 completed (loss: 0.23293203115463257): 100%|[34m██████████[0m| 15/15 [01:35<00:00,  5.69s/it]
+Training Epoch: 1/1, step 14/15 completed (loss: 0.5925551056861877): 100%|[34m██████████[0m| 15/15 [01:35<00:00,  5.69s/it] 
+Training Epoch: 1/1, step 14/15 completed (loss: 0.4020407795906067): 100%|[34m██████████[0m| 15/15 [01:35<00:00,  5.68s/it] 
+Training Epoch: 1/1, step 14/15 completed (loss: 0.47954070568084717): 100%|[34m██████████[0m| 15/15 [01:35<00:00,  5.68s/it]
+Training Epoch: 1/1, step 14/15 completed (loss: 0.4020407795906067): 100%|[34m██████████[0m| 15/15 [01:35<00:00,  6.39s/it]
+
+Training Epoch: 1/1, step 14/15 completed (loss: 0.5925551056861877): 100%|[34m██████████[0m| 15/15 [01:35<00:00,  6.39s/it]
+
+Training Epoch: 1/1, step 14/15 completed (loss: 0.47954070568084717): 100%|[34m██████████[0m| 15/15 [01:35<00:00,  6.40s/it]
+
+Training Epoch: 1/1, step 14/15 completed (loss: 0.43682861328125): 100%|[34m██████████[0m| 15/15 [01:36<00:00,  6.40s/it]
+Max CUDA memory allocated was 17 GB
+Max CUDA memory reserved was 20 GB
+Peak active CUDA memory was 17 GB
+CUDA Malloc retries : 0
+CPU Total Peak Memory consumed during the train (max): 2 GB
+
+evaluating Epoch:   0%|[32m          [0m| 0/24 [00:00<?, ?it/s]
+evaluating Epoch:   0%|[32m          [0m| 0/24 [00:00<?, ?it/s]huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+evaluating Epoch:   0%|[32m          [0m| 0/24 [00:00<?, ?it/s]huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+evaluating Epoch:   0%|[32m          [0m| 0/24 [00:00<?, ?it/s]huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+evaluating Epoch:   4%|[32m▍         [0m| 1/24 [00:01<00:23,  1.02s/it]
+evaluating Epoch:   4%|[32m▍         [0m| 1/24 [00:01<00:27,  1.19s/it]
+evaluating Epoch:   4%|[32m▍         [0m| 1/24 [00:01<00:28,  1.22s/it]
+evaluating Epoch:   4%|[32m▍         [0m| 1/24 [00:01<00:26,  1.15s/it]
+evaluating Epoch:   8%|[32m▊         [0m| 2/24 [00:02<00:29,  1.36s/it]
+evaluating Epoch:   8%|[32m▊         [0m| 2/24 [00:02<00:28,  1.31s/it]
+evaluating Epoch:   8%|[32m▊         [0m| 2/24 [00:02<00:30,  1.37s/it]
+evaluating Epoch:   8%|[32m▊         [0m| 2/24 [00:02<00:29,  1.33s/it]
+evaluating Epoch:  12%|[32m█▎        [0m| 3/24 [00:03<00:22,  1.08s/it]
+evaluating Epoch:  12%|[32m█▎        [0m| 3/24 [00:03<00:22,  1.08s/it]
+evaluating Epoch:  12%|[32m█▎        [0m| 3/24 [00:03<00:22,  1.06s/it]
+evaluating Epoch:  12%|[32m█▎        [0m| 3/24 [00:03<00:22,  1.06s/it]
+evaluating Epoch:  17%|[32m█▋        [0m| 4/24 [00:04<00:22,  1.10s/it]
+evaluating Epoch:  17%|[32m█▋        [0m| 4/24 [00:04<00:22,  1.12s/it]
+evaluating Epoch:  17%|[32m█▋        [0m| 4/24 [00:04<00:21,  1.10s/it]
+evaluating Epoch:  17%|[32m█▋        [0m| 4/24 [00:04<00:22,  1.12s/it]
+evaluating Epoch:  21%|[32m██        [0m| 5/24 [00:05<00:21,  1.13s/it]
+evaluating Epoch:  21%|[32m██        [0m| 5/24 [00:05<00:21,  1.13s/it]
+evaluating Epoch:  21%|[32m██        [0m| 5/24 [00:05<00:21,  1.13s/it]
+evaluating Epoch:  21%|[32m██        [0m| 5/24 [00:05<00:21,  1.14s/it]
+evaluating Epoch:  25%|[32m██▌       [0m| 6/24 [00:07<00:21,  1.19s/it]
+evaluating Epoch:  25%|[32m██▌       [0m| 6/24 [00:06<00:21,  1.19s/it]
+evaluating Epoch:  25%|[32m██▌       [0m| 6/24 [00:07<00:21,  1.19s/it]
+evaluating Epoch:  25%|[32m██▌       [0m| 6/24 [00:06<00:21,  1.19s/it]
+evaluating Epoch:  29%|[32m██▉       [0m| 7/24 [00:08<00:20,  1.18s/it]
+evaluating Epoch:  29%|[32m██▉       [0m| 7/24 [00:08<00:19,  1.17s/it]
+evaluating Epoch:  29%|[32m██▉       [0m| 7/24 [00:08<00:20,  1.18s/it]
+evaluating Epoch:  29%|[32m██▉       [0m| 7/24 [00:08<00:20,  1.18s/it]
+evaluating Epoch:  33%|[32m███▎      [0m| 8/24 [00:09<00:18,  1.13s/it]
+evaluating Epoch:  33%|[32m███▎      [0m| 8/24 [00:09<00:18,  1.13s/it]
+evaluating Epoch:  33%|[32m███▎      [0m| 8/24 [00:09<00:18,  1.13s/it]
+evaluating Epoch:  33%|[32m███▎      [0m| 8/24 [00:09<00:18,  1.13s/it]
+evaluating Epoch:  38%|[32m███▊      [0m| 9/24 [00:10<00:16,  1.07s/it]
+evaluating Epoch:  38%|[32m███▊      [0m| 9/24 [00:10<00:16,  1.07s/it]
+evaluating Epoch:  38%|[32m███▊      [0m| 9/24 [00:10<00:16,  1.07s/it]
+evaluating Epoch:  38%|[32m███▊      [0m| 9/24 [00:10<00:16,  1.09s/it]
+evaluating Epoch:  42%|[32m████▏     [0m| 10/24 [00:11<00:15,  1.09s/it]
+evaluating Epoch:  42%|[32m████▏     [0m| 10/24 [00:11<00:15,  1.10s/it]
+evaluating Epoch:  42%|[32m████▏     [0m| 10/24 [00:11<00:15,  1.09s/it]
+evaluating Epoch:  42%|[32m████▏     [0m| 10/24 [00:11<00:15,  1.10s/it]
+evaluating Epoch:  46%|[32m████▌     [0m| 11/24 [00:12<00:14,  1.09s/it]
+evaluating Epoch:  46%|[32m████▌     [0m| 11/24 [00:12<00:14,  1.09s/it]
+evaluating Epoch:  46%|[32m████▌     [0m| 11/24 [00:12<00:14,  1.10s/it]
+evaluating Epoch:  46%|[32m████▌     [0m| 11/24 [00:12<00:14,  1.10s/it]
+evaluating Epoch:  50%|[32m█████     [0m| 12/24 [00:13<00:12,  1.03s/it]
+evaluating Epoch:  50%|[32m█████     [0m| 12/24 [00:13<00:12,  1.03s/it]
+evaluating Epoch:  50%|[32m█████     [0m| 12/24 [00:13<00:12,  1.04s/it]
+evaluating Epoch:  50%|[32m█████     [0m| 12/24 [00:13<00:12,  1.04s/it]
+evaluating Epoch:  54%|[32m█████▍    [0m| 13/24 [00:14<00:10,  1.01it/s]
+evaluating Epoch:  54%|[32m█████▍    [0m| 13/24 [00:14<00:10,  1.01it/s]
+evaluating Epoch:  54%|[32m█████▍    [0m| 13/24 [00:14<00:10,  1.01it/s]
+evaluating Epoch:  54%|[32m█████▍    [0m| 13/24 [00:14<00:10,  1.01it/s]
+evaluating Epoch:  58%|[32m█████▊    [0m| 14/24 [00:15<00:10,  1.02s/it]
+evaluating Epoch:  58%|[32m█████▊    [0m| 14/24 [00:15<00:10,  1.02s/it]
+evaluating Epoch:  58%|[32m█████▊    [0m| 14/24 [00:15<00:10,  1.02s/it]
+evaluating Epoch:  58%|[32m█████▊    [0m| 14/24 [00:15<00:10,  1.03s/it]
+evaluating Epoch:  62%|[32m██████▎   [0m| 15/24 [00:16<00:08,  1.06it/s]
+evaluating Epoch:  62%|[32m██████▎   [0m| 15/24 [00:16<00:08,  1.06it/s]
+evaluating Epoch:  62%|[32m██████▎   [0m| 15/24 [00:15<00:08,  1.06it/s]
+evaluating Epoch:  62%|[32m██████▎   [0m| 15/24 [00:16<00:08,  1.05it/s]
+evaluating Epoch:  67%|[32m██████▋   [0m| 16/24 [00:17<00:07,  1.04it/s]
+evaluating Epoch:  67%|[32m██████▋   [0m| 16/24 [00:16<00:07,  1.04it/s]
+evaluating Epoch:  67%|[32m██████▋   [0m| 16/24 [00:17<00:07,  1.04it/s]
+evaluating Epoch:  67%|[32m██████▋   [0m| 16/24 [00:17<00:07,  1.04it/s]
+evaluating Epoch:  71%|[32m███████   [0m| 17/24 [00:18<00:06,  1.03it/s]
+evaluating Epoch:  71%|[32m███████   [0m| 17/24 [00:18<00:06,  1.03it/s]
+evaluating Epoch:  71%|[32m███████   [0m| 17/24 [00:17<00:06,  1.03it/s]
+evaluating Epoch:  71%|[32m███████   [0m| 17/24 [00:18<00:06,  1.02it/s]
+evaluating Epoch:  75%|[32m███████▌  [0m| 18/24 [00:19<00:05,  1.01it/s]
+evaluating Epoch:  75%|[32m███████▌  [0m| 18/24 [00:19<00:05,  1.01it/s]
+evaluating Epoch:  75%|[32m███████▌  [0m| 18/24 [00:18<00:05,  1.00it/s]
+evaluating Epoch:  75%|[32m███████▌  [0m| 18/24 [00:19<00:05,  1.00it/s]
+evaluating Epoch:  79%|[32m███████▉  [0m| 19/24 [00:20<00:04,  1.02it/s]
+evaluating Epoch:  79%|[32m███████▉  [0m| 19/24 [00:20<00:04,  1.02it/s]
+evaluating Epoch:  79%|[32m███████▉  [0m| 19/24 [00:19<00:04,  1.02it/s]
+evaluating Epoch:  79%|[32m███████▉  [0m| 19/24 [00:20<00:04,  1.02it/s]
+evaluating Epoch:  83%|[32m████████▎ [0m| 20/24 [00:20<00:03,  1.13it/s]
+evaluating Epoch:  83%|[32m████████▎ [0m| 20/24 [00:20<00:03,  1.13it/s]
+evaluating Epoch:  83%|[32m████████▎ [0m| 20/24 [00:20<00:03,  1.13it/s]
+evaluating Epoch:  83%|[32m████████▎ [0m| 20/24 [00:20<00:03,  1.11it/s]
+evaluating Epoch:  88%|[32m████████▊ [0m| 21/24 [00:22<00:03,  1.00s/it]
+evaluating Epoch:  88%|[32m████████▊ [0m| 21/24 [00:21<00:03,  1.00s/it]
+evaluating Epoch:  88%|[32m████████▊ [0m| 21/24 [00:21<00:03,  1.00s/it]
+evaluating Epoch:  88%|[32m████████▊ [0m| 21/24 [00:22<00:02,  1.00it/s]
+evaluating Epoch:  92%|[32m█████████▏[0m| 22/24 [00:22<00:01,  1.01it/s]
+evaluating Epoch:  92%|[32m█████████▏[0m| 22/24 [00:22<00:01,  1.01it/s]
+evaluating Epoch:  92%|[32m█████████▏[0m| 22/24 [00:23<00:01,  1.01it/s]
+evaluating Epoch:  92%|[32m█████████▏[0m| 22/24 [00:22<00:02,  1.00s/it]
+evaluating Epoch:  96%|[32m█████████▌[0m| 23/24 [00:23<00:00,  1.03it/s]
+evaluating Epoch:  96%|[32m█████████▌[0m| 23/24 [00:23<00:00,  1.02it/s]
+evaluating Epoch:  96%|[32m█████████▌[0m| 23/24 [00:23<00:00,  1.02it/s]
+evaluating Epoch:  96%|[32m█████████▌[0m| 23/24 [00:23<00:00,  1.03it/s]
+evaluating Epoch: 100%|[32m██████████[0m| 24/24 [00:24<00:00,  1.05it/s]
+evaluating Epoch: 100%|[32m██████████[0m| 24/24 [00:24<00:00,  1.05it/s]
+evaluating Epoch: 100%|[32m██████████[0m| 24/24 [00:24<00:00,  1.05it/s]
+evaluating Epoch: 100%|[32m██████████[0m| 24/24 [00:24<00:00,  1.05it/s]
+evaluating Epoch: 100%|[32m██████████[0m| 24/24 [00:24<00:00,  1.04s/it]
+
+evaluating Epoch: 100%|[32m██████████[0m| 24/24 [00:24<00:00,  1.03s/it]
+
+evaluating Epoch: 100%|[32m██████████[0m| 24/24 [00:24<00:00,  1.04s/it]
+
+evaluating Epoch: 100%|[32m██████████[0m| 24/24 [00:24<00:00,  1.04s/it]
+ eval_ppl=tensor(nan, device='cuda:0') eval_epoch_loss=tensor(nan, device='cuda:0')
+Epoch 1: train_perplexity=2.5941, train_epoch_loss=0.9532, epoch time 96.49167197197676s
+Key: avg_train_prep, Value: 2.5941104888916016
+Key: avg_train_loss, Value: 0.9532436728477478
+Key: avg_eval_prep, Value: nan
+Key: avg_eval_loss, Value: inf
+Key: avg_epoch_time, Value: 96.49167197197676
+Key: avg_checkpoint_time, Value: 0.0018045930191874504
+wandb: 
+wandb: Run history:
+wandb:             train/epoch ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:              train/loss █▅▃▂▂▂▂▂▁▁▁▁▂▁▂
+wandb:              train/step ▁▁▂▃▃▃▄▅▅▅▆▇▇▇█
+wandb: train/tokens_per_second ▁▄▄▅▆▆▆▇▇▇▇▇███
+wandb: 
+wandb: Run summary:
+wandb:     avg_checkpoint_time 0.0018
+wandb:          avg_epoch_time 96.49167
+wandb:           avg_eval_loss inf
+wandb:          avg_train_loss 0.95324
+wandb:          avg_train_prep 2.59411
+wandb:               eval/loss nan
+wandb:         eval/perplexity nan
+wandb:             train/epoch 1
+wandb:              train/loss 0.59256
+wandb:              train/step 14
+wandb: train/tokens_per_second 5118.83916
+wandb: 
+wandb: You can sync this run to the cloud by running:
+wandb: wandb sync /scratch/gpfs/vs3041/cruijff/llama-recipes-fertility/recipes/quickstart/finetuning/wandb/offline-run-20240802_083707-o57y9ka9
+wandb: Find logs at: ./wandb/offline-run-20240802_083707-o57y9ka9/logs
+wandb: WARNING The new W&B backend becomes opt-out in version 0.18.0; try it out with `wandb.require("core")`! See https://wandb.me/wandb-core for more information.
+[rank0]:[W802 08:40:22.906296187 ProcessGroupNCCL.cpp:1168] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())

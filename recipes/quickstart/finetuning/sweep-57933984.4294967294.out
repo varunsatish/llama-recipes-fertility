@@ -1,0 +1,8 @@
+Running experiment with batch_size=32, context_length=768, num_reps=500
+Experiment completed. Success: True
+Running experiment with batch_size=32, context_length=1024, num_reps=500
+Experiment completed. Success: True
+Running experiment with batch_size=64, context_length=768, num_reps=500
+Experiment completed. Success: False
+Running experiment with batch_size=64, context_length=1024, num_reps=500
+Experiment completed. Success: False
