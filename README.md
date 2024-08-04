@@ -33,7 +33,7 @@ Navigate to `cruijff` and then install this repo from Github in this directory:
 
 ```bash
 cd cruijff
-git clone https://github.com/varunsatish/llama-recipes-fertility`
+git clone https://github.com/varunsatish/llama-recipes-fertility
 ```
 
 Install the requirements into a new virtual environment:
