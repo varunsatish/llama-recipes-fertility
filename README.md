@@ -2,26 +2,30 @@
 
 A fork of the [Llama recipes](https://github.com/meta-llama/llama-recipes) repository. See the [original repo](https://github.com/meta-llama/llama-recipes) for more information.
 
-## Getting started
+## Getting started on Della
+
+To set up the enviironment in Della, you first need to run:
+
+`module load anaconda3/2024.2`
+
 Install this repo from Github:
-```bash
-git clone https://github.com/keyonvafa/llama-recipes-fertility
-```
+`git clone https://github.com/keyonvafa/llama-recipes-fertility`
 
 Install the requirements into a new virtual environment:
+
 ```bash
-python3 -m venv ~/.recipes
-source ~/.recipes/bin/activate
+python3 -m venv ~/.cruijff
+source ~/.cruijff/bin/activate
 pip install -r llama-recipes-fertility/requirements.txt
 cd llama-recipes-fertility
 pip install -e .
 ```
 
-Install Llama 3 if you haven't already. Make sure you have your Hugging Face access key ready and then log in:
-```bash
-huggingface-cli login
-```
-Follow the instructions to log in with your access key (you can select `n` for the question about Github access). Then install Llama 3:
+Install Llama 3 if you haven’t already. Make sure you have your Hugging Face access key ready and then log in:
+`huggingface-cli login`
+
+Follow the instructions to log in with your access key (you can select n for the question about Github access). Then install Llama 3:
+
 ```bash
 cd recipes/quickstart/finetuning
 mkdir models
@@ -29,9 +33,86 @@ mkdir ckpts/
 huggingface-cli download meta-llama/Meta-Llama-3.1-8B-Instruct --local-dir models/Meta-Llama-3.1-8B-Instruct
 ```
 
-Finally log in to weights and biases to track training (you'll also need your wandb access key). 
+Set wandb to offline mode:
+
+`export WANDB_MODE=offline`
+
+Then, run the folllowing code for a multi-GPU speed test using LoRA:
+
 ```bash
-wandb login
+NAME=multi_gpu_peft
+export CUDA_VISIBLE_DEVICES=0,1,2,3
+FSDP_CPU_RAM_EFFICIENT_LOADING=1 ACCELERATE_USE_FSDP=1 torchrun --nnodes 1  \
+    --nproc_per_node 4  finetuning.py --enable_fsdp  \
+    --quantization 4bit  \
+    --model_name models/Meta-Llama-3.1-8B-Instruct  \
+    --mixed_precision False --low_cpu_fsdp  \
+    --use_peft --peft_method lora --output_dir ckpts/$NAME  \
+    --num_epochs 10 --run_validation True  \
+    --batch_size_training 1 --lr 0.0003  \
+    --use_fast_kernels True --context_length 512  \
+    --batching_strategy packing --mixed_precision False  \
+    --dataset fertility_dataset  --use_speed \
+    --use-wandb --wandb_config.name $NAME
+```
+
+## Getting started on Snellius 
+
+To set up the enviironment in Snellius, you first need to run:
+
+```bash
+module load 2023
+module load Python/3.11.3-GCCcore-12.3.0
+```
+
+Install this repo from Github:
+`git clone https://github.com/keyonvafa/llama-recipes-fertility`
+
+Install the requirements into a new virtual environment (if you haven't done so already)
+
+```bash
+python3 -m venv ~/.cruijff
+source ~/.cruijff/bin/activate
+pip install -r llama-recipes-fertility/requirements.txt
+cd llama-recipes-fertility
+pip install -e .
+```
+
+Once you have done this once, you simply need to activate the environment using `source ~/.cruijff/bin/activate`
+
+Install Llama 3 if you haven’t already. Make sure you have your Hugging Face access key ready and then log in:
+`huggingface-cli login`
+
+Follow the instructions to log in with your access key (you can select n for the question about Github access). Then install Llama 3:
+
+```bash
+cd recipes/quickstart/finetuning
+mkdir models
+mkdir ckpts/
+huggingface-cli download meta-llama/Meta-Llama-3.1-8B-Instruct --local-dir models/Meta-Llama-3.1-8B-Instruct
+```
+
+Set wandb to offline mode:
+
+`export WANDB_MODE=offline`
+
+Then, run the folllowing code for a multi-GPU speed test using LoRA:
+
+```bash
+NAME=multi_gpu_peft
+export CUDA_VISIBLE_DEVICES=0,1,2,3
+FSDP_CPU_RAM_EFFICIENT_LOADING=1 ACCELERATE_USE_FSDP=1 torchrun --nnodes 1  \
+    --nproc_per_node 4  finetuning.py --enable_fsdp  \
+    --quantization 4bit  \
+    --model_name models/Meta-Llama-3.1-8B-Instruct  \
+    --mixed_precision False --low_cpu_fsdp  \
+    --use_peft --peft_method lora --output_dir ckpts/$NAME  \
+    --num_epochs 10 --run_validation True  \
+    --batch_size_training 1 --lr 0.0003  \
+    --use_fast_kernels True --context_length 512  \
+    --batching_strategy packing --mixed_precision False  \
+    --dataset fertility_dataset  --use_speed \
+    --use-wandb --wandb_config.name $NAME
 ```
 
 ### Datasets
@@ -114,110 +195,3 @@ If you want to explore the code and make some changes, the most relevant files a
 - `src/llama_recipes/datasets/fertility_dataset.py`: defining the dataset
 - `src/llama_recipes/finetuning.py`: the main script for training the model
 
-## Running the script on Della
-
-`module load anaconda3/2024.2`
-
-Install this repo from Github:
-`git clone https://github.com/keyonvafa/llama-recipes-fertility`
-
-Install the requirements into a new virtual environment:
-
-```bash
-python3 -m venv ~/.recipes
-source ~/.recipes/bin/activate
-pip install -r llama-recipes-fertility/requirements.txt
-cd llama-recipes-fertility
-pip install -e .
-```
-
-Install Llama 3 if you haven’t already. Make sure you have your Hugging Face access key ready and then log in:
-`huggingface-cli login`
-
-Follow the instructions to log in with your access key (you can select n for the question about Github access). Then install Llama 3:
-
-```bash
-cd recipes/quickstart/finetuning
-mkdir models
-mkdir ckpts/
-huggingface-cli download meta-llama/Meta-Llama-3.1-8B-Instruct --local-dir models/Meta-Llama-3.1-8B-Instruct
-```
-
-Set wandb to offline mode:
-
-`export WANDB_MODE=offline`
-
-Then, run the folllowing code for a multi-GPU speed test using LoRA:
-
-```bash
-NAME=multi_gpu_peft
-export CUDA_VISIBLE_DEVICES=0,1,2,3
-FSDP_CPU_RAM_EFFICIENT_LOADING=1 ACCELERATE_USE_FSDP=1 torchrun --nnodes 1  \
-    --nproc_per_node 4  finetuning.py --enable_fsdp  \
-    --quantization 4bit  \
-    --model_name models/Meta-Llama-3.1-8B-Instruct  \
-    --mixed_precision False --low_cpu_fsdp  \
-    --use_peft --peft_method lora --output_dir ckpts/$NAME  \
-    --num_epochs 10 --run_validation True  \
-    --batch_size_training 1 --lr 0.0003  \
-    --use_fast_kernels True --context_length 512  \
-    --batching_strategy packing --mixed_precision False  \
-    --dataset fertility_dataset  --use_speed \
-    --use-wandb --wandb_config.name $NAME
-```
-
-## Running the script on Snellius 
-
-
-`module load 2023`
-`module load Python/3.11.3-GCCcore-12.3.0`
-
-Install this repo from Github:
-`git clone https://github.com/keyonvafa/llama-recipes-fertility`
-
-Install the requirements into a new virtual environment (if you haven't done so already)
-
-```bash
-python3 -m venv ~/.cruijff
-source ~/.cruijff/bin/activate
-pip install -r llama-recipes-fertility/requirements.txt
-cd llama-recipes-fertility
-pip install -e .
-```
-
-Once you have done this once, you simply need to activate the environment using `source ~/.cruijff/bin/activate`
-
-Install Llama 3 if you haven’t already. Make sure you have your Hugging Face access key ready and then log in:
-`huggingface-cli login`
-
-Follow the instructions to log in with your access key (you can select n for the question about Github access). Then install Llama 3:
-
-```bash
-cd recipes/quickstart/finetuning
-mkdir models
-mkdir ckpts/
-huggingface-cli download meta-llama/Meta-Llama-3.1-8B-Instruct --local-dir models/Meta-Llama-3.1-8B-Instruct
-```
-
-Set wandb to offline mode:
-
-`export WANDB_MODE=offline`
-
-Then, run the folllowing code for a multi-GPU speed test using LoRA:
-
-```bash
-NAME=multi_gpu_peft
-export CUDA_VISIBLE_DEVICES=0,1,2,3
-FSDP_CPU_RAM_EFFICIENT_LOADING=1 ACCELERATE_USE_FSDP=1 torchrun --nnodes 1  \
-    --nproc_per_node 4  finetuning.py --enable_fsdp  \
-    --quantization 4bit  \
-    --model_name models/Meta-Llama-3.1-8B-Instruct  \
-    --mixed_precision False --low_cpu_fsdp  \
-    --use_peft --peft_method lora --output_dir ckpts/$NAME  \
-    --num_epochs 10 --run_validation True  \
-    --batch_size_training 1 --lr 0.0003  \
-    --use_fast_kernels True --context_length 512  \
-    --batching_strategy packing --mixed_precision False  \
-    --dataset fertility_dataset  --use_speed \
-    --use-wandb --wandb_config.name $NAME
-```
