@@ -23,9 +23,11 @@ To set up the environment in Della, you first need to run this command in a term
 module load anaconda3/2024.2
 ```
 
+If you want to run the fine-tuning code, you will need to ensure that you are in the `della-gpu` login node. 
+
 ## Installing requirements and runnning the script
 
-Create a folder named `cruijff` using `mkdir cruijff`. 
+Create a folder named `cruijff` using `mkdir cruijff`. Because we will be downloading big files, you should ensure that you locate the folder in the part of the disk that is allocated for storage. For example, in Della this would be `/scratch/gpfs/<USER>`. 
 
 Install this repo from Github in this directory: `git clone https://github.com/keyonvafa/llama-recipes-fertility`
 
