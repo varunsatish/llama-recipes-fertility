@@ -4,8 +4,9 @@ A fork of the [Llama recipes](https://github.com/meta-llama/llama-recipes) repos
 
 ## Getting started
 
-### Snellius
+This assumes you are able to login to either Snellius or Della using the command line. 
 
+### Snellius
 
 To set up the enviironment in Snellius, you first need to run this command in a terminal window:
 
@@ -18,7 +19,9 @@ module load Python/3.11.3-GCCcore-12.3.0
 
 To set up the environment in Della, you first need to run this command in a terminal window:
 
+```bash
 `module load anaconda3/2024.2`
+```
 
 ## Installing requirements and runnning the script
 
