@@ -2,6 +2,9 @@
 
 A fork of the [Llama recipes](https://github.com/meta-llama/llama-recipes) repository. See the [original repo](https://github.com/meta-llama/llama-recipes) for more information.
 
+## Notes before getting started
+Running this script will require you to have a Hugging Face account. If you don't already, you can create one here: `https://huggingface.co/`.
+
 ## Getting started
 
 This assumes you are able to login to either Snellius or Della using the command line. 
@@ -20,12 +23,15 @@ module load Python/3.11.3-GCCcore-12.3.0
 To set up the environment in Della, you first need to run this command in a terminal window:
 
 ```bash
+conda deactivate
 module load anaconda3/2024.2
 ```
 
 If you want to run the fine-tuning code, you will need to ensure that you are in the `della-gpu` login node. 
 
 ## Installing requirements
+
+### Python packages
 
 Create a folder named `cruijff` using `mkdir cruijff`. Because we will be downloading big files, you should ensure that you locate the folder in the part of the disk that is allocated for storage. For example, in Della this would be `/scratch/gpfs/<USER>`. 
 
@@ -46,8 +52,13 @@ cd llama-recipes-fertility
 pip install -e .
 ```
 
-Install Llama 3 if you haven’t already. Make sure you have your Hugging Face access key ready and then log in:
-`huggingface-cli login`
+### Hugging Face Models
+
+Make sure you have your Hugging Face access key ready. To obtain this, log into Hugging Face, navigate to "settings" and then "access tokens". Make sure you have write permissions on the token you generate if you need to create a new one. 
+
+```bash
+huggingface-cli login
+```
 
 Follow the instructions to log in with your access key (you can select n for the question about Github access). Then install Llama 3:
 
