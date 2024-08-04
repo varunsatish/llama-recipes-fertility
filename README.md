@@ -20,7 +20,7 @@ module load Python/3.11.3-GCCcore-12.3.0
 To set up the environment in Della, you first need to run this command in a terminal window:
 
 ```bash
-`module load anaconda3/2024.2`
+module load anaconda3/2024.2
 ```
 
 ## Installing requirements and runnning the script
