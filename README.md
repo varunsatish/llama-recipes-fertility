@@ -95,11 +95,11 @@ FSDP_CPU_RAM_EFFICIENT_LOADING=1 ACCELERATE_USE_FSDP=1 torchrun --nnodes 1  \
     --model_name models/Meta-Llama-3.1-8B-Instruct  \
     --mixed_precision False --low_cpu_fsdp  \
     --use_peft --peft_method lora --output_dir ckpts/$NAME  \
-    --num_epochs 10 --run_validation True  \
+    --num_epochs 3 --run_validation True  \
     --batch_size_training 1 --lr 0.0003  \
     --use_fast_kernels True --context_length 512  \
     --batching_strategy packing --mixed_precision False  \
-    --dataset fertility_dataset  --use_speed \
+    --dataset fertility_dataset \
     --use-wandb --wandb_config.name $NAME
 ```
 
