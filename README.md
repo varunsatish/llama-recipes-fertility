@@ -157,7 +157,12 @@ This data template illustrates a simple example of the appropriate data structur
 }
 ```
 
-Place this dataset in `llama-recipes-fertility/recipes/quickstart/finetuning/datasets/predefined_datasets/`. When running the fine-tuning code, makesure you specify `--dataset predefined_dataset` and insert `--dataset_name <DATASET FILE NAME>`.  
+Place this dataset in `llama-recipes-fertility/recipes/quickstart/finetuning/datasets/predefined_datasets/`. When running the fine-tuning code, make sure you specify
+
+```bash
+ --dataset predefined_dataset
+ --dataset_name <DATASET FILE NAME>
+```
 
 
 
