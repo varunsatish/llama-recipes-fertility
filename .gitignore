@@ -2,6 +2,12 @@ recipes/quickstart/finetuning/ckpts
 recipes/quickstart/finetuning/models
 recipes/quickstart/finetuning/model_checkpoints
 recipes/quickstart/finetuning/wandb
+recipes/quickstart/RAG
+recipes/quickstart/Running_Llama3_Anywhere
+recipes/quickstart/agents/dlai
+recipes/quickstart/Getting_to_know_Llama.ipynb
+recipes/quickstart/Prompt_Engineering_with_Llama_3.ipynb
+recipes/quickstart/README.md
 recipes/3p_integrations
 recipes/experimental
 recipes/responsible_ai
