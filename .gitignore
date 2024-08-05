@@ -10,6 +10,7 @@ recipes/quickstart/Getting_to_know_Llama.ipynb
 recipes/quickstart/Prompt_Engineering_with_Llama_3.ipynb
 recipes/quickstart/README.md
 recipes/quickstart/finetuning/**.md
+recipes/quickstart/finetuning/outcomes.csv
 recipes/3p_integrations
 recipes/experimental
 recipes/responsible_ai
