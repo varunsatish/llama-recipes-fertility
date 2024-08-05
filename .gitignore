@@ -3,3 +3,7 @@ recipes/quickstart/finetuning/models
 recipes/quickstart/finetuning/model_checkpoints
 recipes/quickstart/finetuning/wandb
 **/__pycache__/
+run_batchsize**
+**.out
+**.err
+recipes/quickstart/finetuning/datasets/predefined_datasets

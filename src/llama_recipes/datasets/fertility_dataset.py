@@ -9,6 +9,7 @@ import random
 import numpy as np
 import pdb
 from itertools import product
+import json
 
 def create_dataset(size, seed, num_reps):
     features = []
@@ -25,6 +26,9 @@ def create_dataset(size, seed, num_reps):
         features.append(feature)
         outputs.append(str(output))
     return features, outputs
+
+
+
 
 def create_parity_dataset(length=8):
   def calculate_parity(binary_string):
@@ -46,6 +50,15 @@ def get_preprocessed_fertility(dataset_config, tokenizer, split):
         features, outputs = create_dataset(size, seed=0 if split == "train" else 1, num_reps=num_reps)
     if dataset_config.num_extra_tokens > 0:
         features = [x + " " + " ".join(['<>'] * dataset_config.num_extra_tokens) for x in features]
+
+    # saving dataset as json
+    if dataset_config.save_dataset:
+        with open(dataset_config.save_location, 'w') as file:
+            json.dump({
+                "text": features,
+                "output": outputs}, file, indent=4)
+
+
     dataset = datasets.Dataset.from_dict({"text": features, "output": outputs})
     prompt = (
         f"Predict 1 or 0:\n{{text}}\n---\nPrediction:\n"

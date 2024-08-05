@@ -21,6 +21,17 @@ class fertility_dataset:
     use_speed: bool = False
     num_reps_if_speed: int = 100
     num_extra_tokens: int = 0
+    save_dataset: bool = True
+    save_location: str =  "datasets/predefined_datasets/fertility.json"
+
+@dataclass
+class predefined_dataset:
+    dataset: str = "predefined_dataset"
+    train_split: str = "train"
+    test_split: str = "validation"
+    dataset_name: str = ""
+    data_path: str = "src/llama_recipes/datasets/predefined_datasets/" + dataset_name
+    
 
 
 @dataclass
