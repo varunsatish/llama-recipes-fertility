@@ -140,7 +140,35 @@ torchrun finetuning.py \
 
 ## Specifiying Custom Datasets
 
-To specify your own dataset, save a dictionary with a list of strings named `"text"` and a list of 0s and 1s in integer format named `"labels"`. Place this dataset in `llama-recipes-fertility/recipes/quickstart/finetuning/datasets/predefined_datasets/`. When running the fine-tuning code, makesure you specify `--dataset predefined_dataset` and insert `--dataset_name <DATASET FILE NAME>`.  
+To specify your own dataset, save a dictionary with a list of strings named `"text"` and a list of 0s and 1s in string format named `"labels"` in json format. 
+
+This data template illustrates a simple example of the appropriate data structure:
+
+```json
+{
+    "text": [
+        "I want a child",
+        "I want a child",
+        "I want a child",
+        "I don't want a child",
+        "I want a child",
+        "I don't want a child"
+        ], 
+
+    "labels": [
+        "0", 
+        "1",
+        "1",
+        "0",
+        "0",
+        "1"
+    ]
+
+
+}
+```
+
+Place this dataset in `llama-recipes-fertility/recipes/quickstart/finetuning/datasets/predefined_datasets/`. When running the fine-tuning code, makesure you specify `--dataset predefined_dataset` and insert `--dataset_name <DATASET FILE NAME>`.  
 
 
 
