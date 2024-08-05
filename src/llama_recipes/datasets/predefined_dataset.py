@@ -16,14 +16,16 @@ import json
 def get_predefined_dataset(dataset_config, tokenizer, split):
 
     # should be in json format
-    file_path = dataset_config.data_path
+    file_path = "datasets/predefined_datasets/" + dataset_config.dataset_name
 
     with open(file_path, 'r') as file:
         data_dict = json.load(file)
 
-    if "text" not in data_dict:
+    print("The columns in the dataset are: " + str(list(data_dict.keys())))
+
+    if "text" not in list(data_dict.keys()):
         raise KeyError("The 'text' key is missing from the dictionary")
-    if "labels" not in data_dict:
+    if "labels" not in list(data_dict.keys()):
         raise KeyError("The 'labels' key is missing from the dictionary")
 
     dataset = datasets.Dataset.from_dict(data_dict)

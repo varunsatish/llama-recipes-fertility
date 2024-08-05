@@ -13,6 +13,7 @@ from llama_recipes.datasets import (
     get_samsum_dataset,
     get_fertility_dataset,
     get_llamaguard_toxicchat_dataset,
+    get_predefined_dataset
 )
 
 
@@ -58,6 +59,7 @@ DATASET_PREPROC = {
     "fertility_dataset": get_fertility_dataset,
     "custom_dataset": get_custom_dataset,
     "llamaguard_toxicchat_dataset": get_llamaguard_toxicchat_dataset,
+    "predefined_dataset": get_predefined_dataset
 
 }
 

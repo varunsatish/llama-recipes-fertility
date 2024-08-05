@@ -112,27 +112,36 @@ Then, run the folllowing code for a multi-GPU speed test using LoRA:
 ```bash
 NAME=multi_gpu_peft
 export CUDA_VISIBLE_DEVICES=0,1,2,3
-FSDP_CPU_RAM_EFFICIENT_LOADING=1 ACCELERATE_USE_FSDP=1 torchrun --nnodes 1  \
-    --nproc_per_node 4  finetuning.py --enable_fsdp  \
-    --quantization 4bit  \
+FSDP_CPU_RAM_EFFICIENT_LOADING=1 
+ACCELERATE_USE_FSDP=1 
+torchrun finetuning.py \
+    --nnodes 1  \
+    --nproc_per_node 4 \
+     --enable_fsdp  \
+    --quantization 4bit \
     --model_name models/Meta-Llama-3.1-8B-Instruct  \
-    --mixed_precision False --low_cpu_fsdp  \
-    --use_peft --peft_method lora --output_dir ckpts/$NAME  \
-    --num_epochs 2 --run_validation True  \
-    --batch_size_training 1 --lr 0.0003  \
-    --use_fast_kernels True --context_length 512  \
-    --batching_strategy packing --mixed_precision False  \
+    --mixed_precision False 
+    --low_cpu_fsdp  \
+    --use_peft \
+    --peft_method lora \
+    --output_dir ckpts/$NAME  \
+    --num_epochs 2 \
+    --run_validation True  \
+    --batch_size_training 1 \
+    --lr 0.0003  \
+    --use_fast_kernels True \
+    --context_length 512  \
+    --batching_strategy packing \ 
+    --mixed_precision False  \
     --dataset fertility_dataset \
     --use-wandb --wandb_config.name $NAME
 ```
 
 
-### Datasets
-There are two dataset options:
-- `fertility_dataset` (default): a dataset of fertility intentions, where each sequence is either `I want a child` or `I don't want a child` followed by a label. If the text is `I want a child`, the label is drawn from Bern(0.9), and if the text is `I don't want a child`, the label is drawn from Bern(0.1). A perfect model should have eval loss of 0.325 and eval perplexity of 1.384.
-- `parity_dataset`: a dataset of parity, where each sequence is a random binary string followed by the parity of the binary string (whether there are an even or odd number of 1's). A perfect model should have eval loss of 0 and eval perplexity of 1. The `parity_dataset` is only an option for single GPU training. To run it, add the flag `--use_parity`.
+## Specifiying Custom Datasets
 
-For both datasets, the model is only trained to predict the `0` or `1` label at the end of each sequence.
+To specify your own dataset, save a dictionary with a list of strings named `"text"` and a list of 0s and 1s in integer format named `"labels"`. Place this dataset in `llama-recipes-fertility/recipes/quickstart/finetuning/datasets/predefined_datasets/`. When running the fine-tuning code, makesure you specify `--dataset predefined_dataset` and insert `--dataset_name <DATASET FILE NAME>`.  
+
 
 
 ## Fine-tune with PEFT on a single GPU
