@@ -84,12 +84,20 @@ export WANDB_MODE=offline
 ```
 
 
-## Running the script (minimum working example)
+## Running the fine-tuning script (minimum working example)
 
-You will first need to initialize an interactive slurm job.
+You will first need to initialize an interactive slurm job. 
+
+In Snellius, the command is:
 
 ```bash
-salloc --nodes=1 --ntasks=1 --gres=gpu:4 --time=60:00 --mem=480G
+-p gpu and n-tasks-per-node
+```
+
+and in Della, the command is:
+
+```bash
+salloc --nodes=1 --ntasks-per-node=1 --gres=gpu:4 --time=60:00 --mem=480G
 ```
 
 Make sure to activate relevant software:
@@ -125,6 +133,15 @@ FSDP_CPU_RAM_EFFICIENT_LOADING=1 ACCELERATE_USE_FSDP=1 torchrun --nnodes 1  \
     --dataset minimum_working_example  \
     --use-wandb --wandb_config.name $NAME \
     --dist_backend nccl 
+```
+
+## Running the inference script
+
+```bash
+NAME=multi_gpu_peft
+python inference.py --model_name ckpts/$NAME/models/Meta-Llama-3.1-8B-Instruct \
+--peft_model ckpts/$NAME/models/Meta-Llama-3.1-8B-Instruct --prompt_file <test_prompt_file> --use_auditnlg --use_fast_kernels
+
 ```
 
 
