@@ -120,7 +120,7 @@ torchrun finetuning.py \
     --enable_fsdp  \
     --quantization 4bit \
     --model_name models/Meta-Llama-3.1-8B-Instruct  \
-    --mixed_precision False 
+    --mixed_precision False \
     --low_cpu_fsdp  \
     --use_peft \
     --peft_method lora \
