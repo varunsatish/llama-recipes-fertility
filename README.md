@@ -117,7 +117,7 @@ ACCELERATE_USE_FSDP=1
 torchrun finetuning.py \
     --nnodes 1  \
     --nproc_per_node 4 \
-     --enable_fsdp  \
+    --enable_fsdp  \
     --quantization 4bit \
     --model_name models/Meta-Llama-3.1-8B-Instruct  \
     --mixed_precision False 
