@@ -38,7 +38,7 @@ def create_parity_dataset(length=8):
   result = [calculate_parity(combo) for combo in all_combinations]
   return all_combinations, result  
 
-def get_preprocessed_fertility(dataset_config, tokenizer, split):
+def get_preprocessed_minimum_working_example(dataset_config, tokenizer, split):
     # Create a dataset with 1000 samples
     num_reps = 1   # by default, text will be repeated once. For speed tests, we will repeat num_reps times
     if dataset_config.use_parity:

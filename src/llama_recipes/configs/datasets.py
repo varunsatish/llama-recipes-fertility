@@ -11,17 +11,17 @@ class samsum_dataset:
     test_split: str = "validation"
 
 @dataclass
-class fertility_dataset:
-    dataset: str =  "fertility_dataset"
+class minimum_working_example:
+    dataset: str =  "minimum_working_example"
     train_split: str = "train"
     test_split: str = "validation"
     train_size: int = 1000
-    valid_size: int = 1000
+    valid_size: int = 100
     use_parity: bool = False
     use_speed: bool = False
     num_reps_if_speed: int = 100
     num_extra_tokens: int = 0
-    save_dataset: bool = True
+    save_dataset: bool = False
     save_location: str =  "datasets/predefined_datasets/fertility.json"
 
 @dataclass

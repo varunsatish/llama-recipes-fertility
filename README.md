@@ -133,7 +133,7 @@ torchrun finetuning.py \
     --context_length 512  \
     --batching_strategy packing \ 
     --mixed_precision False  \
-    --dataset fertility_dataset \
+    --dataset minimum_working_example \
     --use-wandb --wandb_config.name $NAME
 ```
 
