@@ -113,8 +113,7 @@ Then, run the folllowing code for a multi-GPU speed test using LoRA:
 NAME=multi_gpu_peft
 export CUDA_VISIBLE_DEVICES=0,1,2,3
 FSDP_CPU_RAM_EFFICIENT_LOADING=1 
-ACCELERATE_USE_FSDP=1 
-torchrun finetuning.py \
+ACCELERATE_USE_FSDP=1 torchrun finetuning.py \
     --nnodes 1  \
     --nproc_per_node 4 \
     --enable_fsdp  \
