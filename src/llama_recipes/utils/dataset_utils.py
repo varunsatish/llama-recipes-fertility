@@ -11,7 +11,7 @@ from llama_recipes.datasets import (
     get_grammar_dataset,
     get_alpaca_dataset,
     get_samsum_dataset,
-    get_fertility_dataset,
+    get_minimum_working_example,
     get_llamaguard_toxicchat_dataset,
     get_predefined_dataset
 )
@@ -56,7 +56,7 @@ DATASET_PREPROC = {
     "alpaca_dataset": partial(get_alpaca_dataset),
     "grammar_dataset": get_grammar_dataset,
     "samsum_dataset": get_samsum_dataset,
-    "fertility_dataset": get_fertility_dataset,
+    "minimum_working_example": get_minimum_working_example,
     "custom_dataset": get_custom_dataset,
     "llamaguard_toxicchat_dataset": get_llamaguard_toxicchat_dataset,
     "predefined_dataset": get_predefined_dataset
