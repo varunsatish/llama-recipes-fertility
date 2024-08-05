@@ -16,7 +16,7 @@ class minimum_working_example:
     train_split: str = "train"
     test_split: str = "validation"
     train_size: int = 1000
-    valid_size: int = 100
+    valid_size: int = 1000
     use_parity: bool = False
     use_speed: bool = False
     num_reps_if_speed: int = 100
