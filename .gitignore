@@ -28,5 +28,5 @@ dev_requirements.txt
 UPDATES.md
 /tools/benchmarks/
 /docs/
-**ipynb
+**.ipynb
 recipes/quickstart/finetuning/datasets/README.md
