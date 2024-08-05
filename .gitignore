@@ -12,7 +12,7 @@ run_batchsize**
 **.out
 **.err
 recipes/quickstart/finetuning/datasets/predefined_datasets
-tools/benchmarks
+benchmarks**
 CODE_OF_CONDUCT.md
 CONTRIBUTING.md
 dev_requirements.txt
