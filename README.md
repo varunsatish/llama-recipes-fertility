@@ -94,7 +94,7 @@ salloc --nodes=1 --ntasks=1 --gres=gpu:4 --time=60:00 --mem=480G
 
 Make sure to activate relevant software:
 
-On snellius, do
+On Snellius, do
 ```bash
 module load 2023
 module load Python/3.11.3-GCCcore-12.3.0
