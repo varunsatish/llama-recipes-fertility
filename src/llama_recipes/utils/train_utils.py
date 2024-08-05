@@ -419,13 +419,15 @@ def check_frozen_layers_peft_model(model):
                 print(f"Layer {i}, parameter {name}: requires_grad = {param.requires_grad}")
 
 
-def setup():
+def setup(backend=None):
     """Initialize the process group for distributed training"""
     if is_ccl_available():
         # distributed training on xpus
         dist.init_process_group("ccl")
-    else:
+    elif not backend:
         dist.init_process_group("nccl")
+    else:
+        dist.init_process_group(backend)
 
 
 def setup_environ_flags(rank):
