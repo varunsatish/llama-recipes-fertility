@@ -77,11 +77,7 @@ mkdir ckpts/
 huggingface-cli download meta-llama/Meta-Llama-3.1-8B-Instruct --local-dir models/Meta-Llama-3.1-8B-Instruct
 ```
 
-Set wandb to offline mode:
 
-```bash
-export WANDB_MODE=offline
-```
 
 
 ## Running the fine-tuning script (minimum working example)
@@ -91,13 +87,13 @@ You will first need to initialize an interactive slurm job.
 In Snellius, the command is:
 
 ```bash
--p gpu and n-tasks-per-node
+salloc --nodes=1 --ntasks-per-node=1 --p gpu --time=60:00 --mem=480G
 ```
 
 and in Della, the command is:
 
 ```bash
-salloc --nodes=1 --ntasks-per-node=1 --gres=gpu:4 --time=60:00 --mem=480G
+salloc --nodes=1 --ntasks=1 --gres=gpu:4 --time=60:00 --mem=480G
 ```
 
 Make sure to activate relevant software:
@@ -108,11 +104,17 @@ module load 2023
 module load Python/3.11.3-GCCcore-12.3.0
 ```
 
-Make sure you activate the environment and navigate to the relevant directory
+Navigate to the relevant directory
 
 ```bash
 source ~/.cruijff/bin/activate
 cd recipes/quickstart/finetuning
+```
+
+Set wandb to offline mode:
+
+```bash
+export WANDB_MODE=offline
 ```
 
 Then, run the folllowing code for a multi-GPU speed test using LoRA:
@@ -131,8 +133,7 @@ FSDP_CPU_RAM_EFFICIENT_LOADING=1 ACCELERATE_USE_FSDP=1 torchrun --nnodes 1  \
     --use_fast_kernels True --context_length 512  \
     --batching_strategy packing --mixed_precision False  \
     --dataset minimum_working_example  \
-    --use-wandb --wandb_config.name $NAME \
-    --dist_backend nccl 
+    --use-wandb --wandb_config.name $NAME 
 ```
 
 ## Running the inference script
