@@ -2,6 +2,7 @@ recipes/quickstart/finetuning/ckpts
 recipes/quickstart/finetuning/models
 recipes/quickstart/finetuning/model_checkpoints
 recipes/quickstart/finetuning/wandb
+recipes/quickstart/inference
 recipes/quickstart/RAG
 recipes/quickstart/Running_Llama3_Anywhere
 recipes/quickstart/agents/dlai
