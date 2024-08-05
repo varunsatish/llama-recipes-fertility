@@ -100,8 +100,11 @@ module load 2023
 module load Python/3.11.3-GCCcore-12.3.0
 ```
 
+Make sure you activate the environment and navigate to the relevant directory
+
 ```bash
 source ~/.cruijff/bin/activate
+cd recipes/quickstart/finetuning
 ```
 
 Then, run the folllowing code for a multi-GPU speed test using LoRA:
