@@ -29,3 +29,5 @@ UPDATES.md
 /tools/benchmarks/
 /docs/
 recipes/quickstart/finetuning/datasets/README.md
+recipes/quickstart/original_models/
+recipes/quickstart/train_inf_output/

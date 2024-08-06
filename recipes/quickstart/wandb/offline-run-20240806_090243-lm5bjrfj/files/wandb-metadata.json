@@ -1,0 +1,351 @@
+{
+    "os": "Linux-4.18.0-553.8.1.el8_10.x86_64-x86_64-with-glibc2.28",
+    "python": "3.11.7",
+    "heartbeatAt": "2024-08-06T13:02:43.995736",
+    "startedAt": "2024-08-06T13:02:43.852388",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "--original_model",
+        "original_models/Meta-Llama-3.1-8B-Instruct",
+        "--fine_tuned_model",
+        "train_inf_output/multi_gpu_peft",
+        "--output_file",
+        "train_inf_output/multi_gpu_peft/predictions.csv",
+        "--test_data",
+        "finetuning/datasets/predefined_datasets/minimum_working_example/",
+        "--wandb_config",
+        "multi_gpu_peft"
+    ],
+    "state": "running",
+    "program": "/scratch/gpfs/vs3041/cruijff/llama-recipes-fertility/recipes/quickstart/hf_inference/inference.py",
+    "codePathLocal": "hf_inference/inference.py",
+    "codePath": "recipes/quickstart/hf_inference/inference.py",
+    "git": {
+        "remote": "https://github.com/varunsatish/llama-recipes-fertility",
+        "commit": "68edc3ee7e1fd70d52009cafa2e06f924e00bc4d"
+    },
+    "email": "varun.satish@princeton.edu",
+    "root": "/scratch/gpfs/vs3041/cruijff/llama-recipes-fertility",
+    "host": "della-l06g12",
+    "username": "vs3041",
+    "executable": "/home/vs3041/.cruijff/bin/python",
+    "cpu_count": 56,
+    "cpu_count_logical": 56,
+    "cpu_freq": {
+        "current": 2743.5381428571427,
+        "min": 0.0,
+        "max": 0.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3447.454,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2745.031,
+            "min": 0.0,
+            "max": 0.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 156.1737060546875,
+            "used": 94.3451156616211
+        }
+    },
+    "gpu": "NVIDIA A100-SXM4-40GB",
+    "gpu_count": 4,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA A100-SXM4-40GB",
+            "memory_total": 42949672960
+        },
+        {
+            "name": "NVIDIA A100-SXM4-40GB",
+            "memory_total": 42949672960
+        },
+        {
+            "name": "NVIDIA A100-SXM4-40GB",
+            "memory_total": 42949672960
+        },
+        {
+            "name": "NVIDIA A100-SXM4-40GB",
+            "memory_total": 42949672960
+        }
+    ],
+    "memory": {
+        "total": 1007.1192436218262
+    }
+}

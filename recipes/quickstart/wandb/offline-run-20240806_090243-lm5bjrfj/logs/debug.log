@@ -1,0 +1,25 @@
+2024-08-06 09:02:43,886 INFO    MainThread:1997686 [wandb_setup.py:_flush():76] Current SDK version is 0.17.5
+2024-08-06 09:02:43,886 INFO    MainThread:1997686 [wandb_setup.py:_flush():76] Configure stats pid to 1997686
+2024-08-06 09:02:43,886 INFO    MainThread:1997686 [wandb_setup.py:_flush():76] Loading settings from /home/vs3041/.config/wandb/settings
+2024-08-06 09:02:43,886 INFO    MainThread:1997686 [wandb_setup.py:_flush():76] Loading settings from /scratch/gpfs/vs3041/cruijff/llama-recipes-fertility/recipes/quickstart/wandb/settings
+2024-08-06 09:02:43,886 INFO    MainThread:1997686 [wandb_setup.py:_flush():76] Loading settings from environment variables: {'mode': 'offline'}
+2024-08-06 09:02:43,886 INFO    MainThread:1997686 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2024-08-06 09:02:43,886 INFO    MainThread:1997686 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'recipes/quickstart/hf_inference/inference.py', 'program_abspath': '/scratch/gpfs/vs3041/cruijff/llama-recipes-fertility/recipes/quickstart/hf_inference/inference.py', 'program': '/scratch/gpfs/vs3041/cruijff/llama-recipes-fertility/recipes/quickstart/hf_inference/inference.py'}
+2024-08-06 09:02:43,886 INFO    MainThread:1997686 [wandb_init.py:_log_setup():529] Logging user logs to /scratch/gpfs/vs3041/cruijff/llama-recipes-fertility/recipes/quickstart/wandb/offline-run-20240806_090243-lm5bjrfj/logs/debug.log
+2024-08-06 09:02:43,886 INFO    MainThread:1997686 [wandb_init.py:_log_setup():530] Logging internal logs to /scratch/gpfs/vs3041/cruijff/llama-recipes-fertility/recipes/quickstart/wandb/offline-run-20240806_090243-lm5bjrfj/logs/debug-internal.log
+2024-08-06 09:02:43,886 INFO    MainThread:1997686 [wandb_init.py:init():569] calling init triggers
+2024-08-06 09:02:43,886 INFO    MainThread:1997686 [wandb_init.py:init():576] wandb.init called with sweep_config: {}
+config: {}
+2024-08-06 09:02:43,886 INFO    MainThread:1997686 [wandb_init.py:init():619] starting backend
+2024-08-06 09:02:43,886 INFO    MainThread:1997686 [wandb_init.py:init():623] setting up manager
+2024-08-06 09:02:43,887 INFO    MainThread:1997686 [backend.py:_multiprocessing_setup():105] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2024-08-06 09:02:43,890 INFO    MainThread:1997686 [wandb_init.py:init():631] backend started and connected
+2024-08-06 09:02:43,891 INFO    MainThread:1997686 [wandb_init.py:init():720] updated telemetry
+2024-08-06 09:02:43,899 INFO    MainThread:1997686 [wandb_init.py:init():753] communicating run to backend with 90.0 second timeout
+2024-08-06 09:02:43,901 INFO    MainThread:1997686 [wandb_init.py:init():804] starting run threads in backend
+2024-08-06 09:02:44,191 INFO    MainThread:1997686 [wandb_run.py:_console_start():2413] atexit reg
+2024-08-06 09:02:44,191 INFO    MainThread:1997686 [wandb_run.py:_redirect():2255] redirect: wrap_raw
+2024-08-06 09:02:44,191 INFO    MainThread:1997686 [wandb_run.py:_redirect():2320] Wrapping output streams.
+2024-08-06 09:02:44,191 INFO    MainThread:1997686 [wandb_run.py:_redirect():2345] Redirects installed.
+2024-08-06 09:02:44,192 INFO    MainThread:1997686 [wandb_init.py:init():847] run started, returning control to user process
+2024-08-06 09:03:49,843 WARNING MsgRouterThr:1997686 [router.py:message_loop():77] message_loop has been closed

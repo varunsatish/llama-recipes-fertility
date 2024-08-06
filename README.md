@@ -145,7 +145,7 @@ python hf_inference/inference.py \
 --original_model original_models/Meta-Llama-3.1-8B-Instruct \
 --fine_tuned_model train_inf_output/$NAME \
 --output_file train_inf_output/$NAME/predictions.csv \
---test_data datasets/predefined_datasets/minimum_working_example/ \
+--test_data finetuning/datasets/predefined_datasets/minimum_working_example/ \
 --wandb_config $NAME
 ```
 
