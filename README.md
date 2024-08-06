@@ -71,7 +71,7 @@ Follow the instructions to log in with your access key. You can select n for the
 In this example, we will be downloading Llama-3.1-8B-Instruct. You can use the same process to download any other model on Hugging Face. 
 
 ```bash
-cd recipes/quickstart/finetuning
+cd recipes/quickstart/
 mkdir original_models/
 mkdir train_inf_output/
 huggingface-cli download meta-llama/Meta-Llama-3.1-8B-Instruct --local-dir original_models/Meta-Llama-3.1-8B-Instruct
@@ -108,7 +108,7 @@ Navigate to the relevant directory
 
 ```bash
 source ~/.cruijff/bin/activate
-cd recipes/quickstart/finetuning
+cd recipes/quickstart/
 ```
 
 Set wandb to offline mode:
@@ -123,7 +123,7 @@ Then, run the folllowing code for a multi-GPU speed test using LoRA:
 NAME=multi_gpu_peft
 export CUDA_VISIBLE_DEVICES=0,1,2,3
 FSDP_CPU_RAM_EFFICIENT_LOADING=1 ACCELERATE_USE_FSDP=1 torchrun --nnodes 1  \
-    --nproc_per_node 4  finetuning.py --enable_fsdp  \
+    --nproc_per_node 4  finetuning/finetuning.py --enable_fsdp  \
     --quantization 4bit  \
     --model_name original_models/Meta-Llama-3.1-8B-Instruct  \
     --mixed_precision False --low_cpu_fsdp  \
@@ -141,7 +141,7 @@ FSDP_CPU_RAM_EFFICIENT_LOADING=1 ACCELERATE_USE_FSDP=1 torchrun --nnodes 1  \
 
 ```bash
 NAME=multi_gpu_peft
-python ../hf_inference/inference.py \
+python hf_inference/inference.py \
 --original_model original_models/Meta-Llama-3.1-8B-Instruct \
 --fine_tuned_model train_inf_output/$NAME \
 --output_file train_inf_output/$NAME/predictions.csv \
