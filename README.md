@@ -72,9 +72,9 @@ In this example, we will be downloading Llama-3.1-8B-Instruct. You can use the s
 
 ```bash
 cd recipes/quickstart/finetuning
-mkdir models/
-mkdir ckpts/
-huggingface-cli download meta-llama/Meta-Llama-3.1-8B-Instruct --local-dir models/Meta-Llama-3.1-8B-Instruct
+mkdir original_models/
+mkdir train_inf_output/
+huggingface-cli download meta-llama/Meta-Llama-3.1-8B-Instruct --local-dir original_models/Meta-Llama-3.1-8B-Instruct
 ```
 
 
@@ -125,9 +125,9 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 FSDP_CPU_RAM_EFFICIENT_LOADING=1 ACCELERATE_USE_FSDP=1 torchrun --nnodes 1  \
     --nproc_per_node 4  finetuning.py --enable_fsdp  \
     --quantization 4bit  \
-    --model_name models/Meta-Llama-3.1-8B-Instruct  \
+    --model_name original_models/Meta-Llama-3.1-8B-Instruct  \
     --mixed_precision False --low_cpu_fsdp  \
-    --use_peft --peft_method lora --output_dir ckpts/$NAME  \
+    --use_peft --peft_method lora --output_dir train_inf_output/$NAME  \
     --num_epochs 2 --run_validation True  \
     --batch_size_training 8 --lr 0.0003  \
     --use_fast_kernels True --context_length 512  \
@@ -142,9 +142,9 @@ FSDP_CPU_RAM_EFFICIENT_LOADING=1 ACCELERATE_USE_FSDP=1 torchrun --nnodes 1  \
 ```bash
 NAME=multi_gpu_peft
 python ../hf_inference/inference.py \
---original_model models/Meta-Llama-3.1-8B-Instruct \
---fine_tuned_model ckpts/$NAME \
---output_file ckpts/$NAME/predictions.csv \
+--original_model original_models/Meta-Llama-3.1-8B-Instruct \
+--fine_tuned_model train_inf_output/$NAME \
+--output_file train_inf_output/$NAME/predictions.csv \
 --test_data datasets/predefined_datasets/minimum_working_example/ \
 --wandb_config $NAME
 ```
@@ -196,8 +196,8 @@ NAME=single_gpu_peft
 export CUDA_VISIBLE_DEVICES=0
 FSDP_CPU_RAM_EFFICIENT_LOADING=1 python finetuning.py  \
     --use_peft --peft_method lora --quantization 4bit  \
-    --model_name models/Meta-Llama-3.1-8B-Instruct  \
-    --output_dir ckpts/$NAME --num_epochs 100  \
+    --model_name original_models/Meta-Llama-3.1-8B-Instruct  \
+    --output_dir train_inf_output/$NAME --num_epochs 100  \
     --run_validation True  --batch_size_training 1  \
     --lr 0.0003 --use_fast_kernels True  \
     --context_length 1024 --batching_strategy packing  \
@@ -222,9 +222,9 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 FSDP_CPU_RAM_EFFICIENT_LOADING=1 ACCELERATE_USE_FSDP=1 torchrun --nnodes 1  \
     --nproc_per_node 4  finetuning.py --enable_fsdp  \
     --quantization 4bit  \
-    --model_name models/Meta-Llama-3.1-8B-Instruct  \
+    --model_name original_models/Meta-Llama-3.1-8B-Instruct  \
     --mixed_precision False --low_cpu_fsdp  \
-    --use_peft --peft_method lora --output_dir ckpts/$NAME  \
+    --use_peft --peft_method lora --output_dir train_inf_output/$NAME  \
     --num_epochs 100 --run_validation True  \
     --batch_size_training 1 --lr 0.0003  \
     --use_fast_kernels True --context_length 1024  \
@@ -244,9 +244,9 @@ To run full-parameter multi-GPU training, use the following command:
 NAME=multi_gpu_full_parameter
 export CUDA_VISIBLE_DEVICES=0,1,2,3
 torchrun --nnodes 1 --nproc_per_node 4  finetuning.py \
-  --enable_fsdp --model_name models/Meta-Llama-3.1-8B-Instruct \
+  --enable_fsdp --model_name original_models/Meta-Llama-3.1-8B-Instruct \
   --dist_checkpoint_root_folder model_checkpoints \
-  --output_dir ckpts/$NAME --fsdp_config.pure_bf16 \
+  --output_dir train_inf_output/$NAME --fsdp_config.pure_bf16 \
   --use_fast_kernels --num_epochs 100 \
   --run_validation True  --batch_size_training 1 \
   --lr 0.0003 --use_fast_kernels True \

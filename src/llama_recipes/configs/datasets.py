@@ -28,8 +28,7 @@ class predefined_dataset:
     dataset: str = "predefined_dataset"
     train_split: str = "train"
     test_split: str = "validation"
-    dataset_name: str = ""
-    data_path: str = "src/llama_recipes/datasets/predefined_datasets/" + dataset_name    
+    data_path: str = ""    
 
 @dataclass
 class grammar_dataset:
