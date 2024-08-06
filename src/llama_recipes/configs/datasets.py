@@ -22,7 +22,6 @@ class minimum_working_example:
     num_reps_if_speed: int = 100
     num_extra_tokens: int = 0
     save_dataset: bool = False
-    save_location: str =  "datasets/predefined_datasets/fertility.json"
 
 @dataclass
 class predefined_dataset:

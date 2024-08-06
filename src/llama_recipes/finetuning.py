@@ -216,21 +216,21 @@ def main(**kwargs):
         split="test",
     )
 
-    # Save the datasets if save_dataset is True
-    if train_config.save_dataset:
-        # Convert to Hugging Face Dataset format if not already
-        if not isinstance(dataset_train, Dataset):
-            dataset_train = Dataset.from_dict(dataset_train)
-        if not isinstance(dataset_val, Dataset):
-            dataset_val = Dataset.from_dict(dataset_val)
+    # # Save the datasets if save_dataset is True
+    # if train_config.save_dataset:
+    #     # Convert to Hugging Face Dataset format if not already
+    #     if not isinstance(dataset_train, Dataset):
+    #         dataset_train = Dataset.from_dict(dataset_train)
+    #     if not isinstance(dataset_val, Dataset):
+    #         dataset_val = Dataset.from_dict(dataset_val)
         
-        # Save training dataset
-        dataset_train.save_to_disk(train_config.output_dir + "/" + 'dataset_train')
+    #     # Save training dataset
+    #     dataset_train.save_to_disk(train_config.output_dir + "/" + 'dataset_train')
         
-        # Save validation dataset
-        dataset_val.save_to_disk(train_config.output_dir + "/" + 'dataset_val')
+    #     # Save validation dataset
+    #     dataset_val.save_to_disk(train_config.output_dir + "/" + 'dataset_val')
         
-        print("Datasets saved successfully in Hugging Face format.")
+    #     print("Datasets saved successfully in Hugging Face format.")
 
 
     if not train_config.enable_fsdp or rank == 0:

@@ -4,6 +4,7 @@
 import importlib
 from functools import partial
 from pathlib import Path
+from datasets import Dataset
 
 import torch
 
