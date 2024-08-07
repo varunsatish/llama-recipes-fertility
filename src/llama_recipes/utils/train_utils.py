@@ -25,6 +25,9 @@ from llama_recipes.policies import fpSixteen,bfSixteen, get_llama_wrapper
 from llama_recipes.utils.memory_utils import MemoryTrace
 from accelerate.utils import is_xpu_available, is_ccl_available
 from llama_recipes.utils.flop_utils import FlopMeasure
+
+import pdb
+
 def set_tokenizer_params(tokenizer: LlamaTokenizer):
     tokenizer.pad_token_id = 0
     tokenizer.padding_side = "left"
@@ -334,6 +337,9 @@ def evaluation(model,train_config, eval_dataloader, local_rank, tokenizer, wandb
     val_step_loss = []
     val_step_perplexity = []
     eval_loss = 0.0  # Initialize evaluation loss
+    binary_labels = []
+    binary_probs = []
+
     total_eval_steps = 0
     with MemoryTrace() as memtrace:
         for step, batch in enumerate(tqdm(eval_dataloader,colour="green", desc="evaluating Epoch", dynamic_ncols=True)):
@@ -356,18 +362,24 @@ def evaluation(model,train_config, eval_dataloader, local_rank, tokenizer, wandb
                 # Forward pass and compute loss
                 outputs = model(**batch)
                 loss = outputs.loss
-                # if epoch is not None and epoch > 1:
-                #   import pdb; pdb.set_trace()
-                #   loss_fct = torch.nn.CrossEntropyLoss()
-                #   shift_logits = outputs.logits[..., :-1, :].contiguous()
-                #   shift_labels = batch['labels'][..., 1:].contiguous()
-                #   shift_logits = shift_logits.view(-1, model.config.vocab_size)
-                #   shift_labels = shift_labels.view(-1)
-                #   shift_labels = shift_labels.to(shift_logits.device)
-                #   loss_fct(shift_logits[:17], shift_labels[:17])
-                #   shift_logits[16].log_softmax(-1)[shift_labels[16]]
-                #   loss_fct(shift_logits[:18], shift_labels[:18])
-                #   shift_logits[17].log_softmax(-1)[shift_labels[17]]
+                labels = batch['labels'][:, 1:]
+                logits = outputs.logits[:, :-1]
+                mask = labels != -100
+                masked_labels = labels[mask]
+                logits = logits.view(-1, logits.size(-1))  # [bsz * seq_len, vocab_size]
+                masked_probs = logits[mask.view(-1)].softmax(-1)
+                # mask = batch['labels'][:, 1:] != -100
+                # masked_labels = batch['labels'][:, 1:][mask]
+                # logits = outputs.logits.view(-1, outputs.logits.size(-1))  # [bsz * seq_len, vocab_size]
+                # masked_probs = logits[mask.view(-1)].softmax(-1)
+                # find out which tokens are 0 and 1 in the tokenizer
+                zero_ind = tokenizer.convert_tokens_to_ids('0')
+                one_ind = tokenizer.convert_tokens_to_ids('1')
+                # we define the probability as the probability of the 1 token
+                batch_binary_labels = (masked_labels == one_ind).long()
+                batch_binary_probs = masked_probs[:, one_ind]
+                binary_probs.extend(batch_binary_probs.cpu().numpy())
+                binary_labels.extend(batch_binary_labels.cpu().numpy())
                 if train_config.save_metrics:
                     val_step_loss.append(loss.detach().float().item())
                     val_step_perplexity.append(float(torch.exp(loss.detach().float())))
@@ -398,10 +410,26 @@ def evaluation(model,train_config, eval_dataloader, local_rank, tokenizer, wandb
     else:
         print(f" {eval_ppl=} {eval_epoch_loss=}")
 
+    # Get sensitivity, precision, recall, F1 score
+    binary_labels = torch.tensor(binary_labels)
+    binary_probs = torch.tensor(binary_probs)
+    binary_preds = (binary_probs > 0.5).long()
+    tp = (binary_preds * binary_labels).sum().item()
+    tn = ((1 - binary_preds) * (1 - binary_labels)).sum().item()
+    fp = (binary_preds * (1 - binary_labels)).sum().item()
+    fn = ((1 - binary_preds) * binary_labels).sum().item()
+    sensitivity = tp / (tp + fn + 1e-7)
+    precision = tp / (tp + fp + 1e-7)
+    recall = tp / (tp + fn + 1e-7)
+    f1 = 2 * (precision * recall) / (precision + recall + 1e-7)
     if wandb_run:
         wandb_run.log({
                         'eval/perplexity': eval_ppl,
                         'eval/loss': eval_epoch_loss,
+                        'eval/sensitivity': sensitivity,
+                        'eval/precision': precision,
+                        'eval/recall': recall,
+                        'eval/f1': f1,
                     }, commit=False)
 
     return eval_ppl, eval_epoch_loss, val_step_loss, val_step_perplexity
