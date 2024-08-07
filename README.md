@@ -149,6 +149,20 @@ python hf_inference/inference.py \
 --wandb_config $NAME
 ```
 
+## Running the evaluation script
+
+```bash
+NAME=multi_gpu_peft
+python evaluation/evaluation.py \
+--prediction_data train_inf_output/$NAME/predictions.csv
+```
+
+```bash
+NAME=multi_gpu_peft
+python evaluation/bootstrap.py \
+--prediction_data train_inf_output/$NAME/predictions.csv
+```
+
 
 ## Specifiying Custom Datasets
 
