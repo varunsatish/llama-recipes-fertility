@@ -40,6 +40,7 @@ dill==0.3.8
 distro==1.9.0
 dnspython==2.6.1
 docker-pycreds==0.4.0
+docstring_parser==0.16
 effdet==0.4.1
 email_validator==2.2.0
 emoji==2.12.1
@@ -99,6 +100,7 @@ langchain-text-splitters==0.2.2
 langdetect==1.0.9
 langsmith==0.1.93
 layoutparser==0.3.4
+-e git+https://github.com/varunsatish/llama-recipes-fertility@3718310f94c171c876a55412a2fbe8d092ae4e63#egg=llama_recipes
 loralib==0.1.2
 lxml==5.2.2
 markdown-it-py==3.0.0
@@ -215,6 +217,7 @@ sentencepiece==0.2.0
 sentry-sdk==2.11.0
 setproctitle==1.3.3
 shellingham==1.5.4
+shtab==1.7.1
 six==1.16.0
 smmap==5.0.1
 sniffio==1.3.1
@@ -240,9 +243,11 @@ tqdm==4.66.4
 traitlets==5.14.3
 transformers==4.43.3
 triton==3.0.0
+trl==0.9.6
 typer==0.12.3
 typing-inspect==0.9.0
 typing_extensions==4.8.0
+tyro==0.8.5
 tzdata==2024.1
 unstructured==0.15.0
 unstructured-client==0.24.1
@@ -260,4 +265,3 @@ wrapt==1.16.0
 xxhash==3.4.1
 yarl==1.9.4
 zipp==3.19.2
-trl==0.9.6
