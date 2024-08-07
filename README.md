@@ -134,7 +134,7 @@ FSDP_CPU_RAM_EFFICIENT_LOADING=1 ACCELERATE_USE_FSDP=1 torchrun --nnodes 1  \
     --batching_strategy packing --mixed_precision False  \
     --dataset minimum_working_example  \
     --use-wandb --wandb_config.name $NAME \
-    --save_model
+    --save_model --save_metrics
 ```
 
 ## Running the inference script
