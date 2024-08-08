@@ -19,12 +19,14 @@ from tqdm import tqdm
 from transformers import LlamaTokenizer
 import json
 
+import numpy as np # ADDED BY MATT 2024-08-08
 
 from llama_recipes.model_checkpointing import save_model_checkpoint, save_model_and_optimizer_sharded, save_optimizer_checkpoint
 from llama_recipes.policies import fpSixteen,bfSixteen, get_llama_wrapper
 from llama_recipes.utils.memory_utils import MemoryTrace
 from accelerate.utils import is_xpu_available, is_ccl_available
 from llama_recipes.utils.flop_utils import FlopMeasure
+
 def set_tokenizer_params(tokenizer: LlamaTokenizer):
     tokenizer.pad_token_id = 0
     tokenizer.padding_side = "left"
@@ -334,6 +336,9 @@ def evaluation(model,train_config, eval_dataloader, local_rank, tokenizer, wandb
     val_step_loss = []
     val_step_perplexity = []
     eval_loss = 0.0  # Initialize evaluation loss
+    binary_labels = []
+    binary_probs = []
+
     total_eval_steps = 0
     with MemoryTrace() as memtrace:
         for step, batch in enumerate(tqdm(eval_dataloader,colour="green", desc="evaluating Epoch", dynamic_ncols=True)):
@@ -356,18 +361,24 @@ def evaluation(model,train_config, eval_dataloader, local_rank, tokenizer, wandb
                 # Forward pass and compute loss
                 outputs = model(**batch)
                 loss = outputs.loss
-                # if epoch is not None and epoch > 1:
-                #   import pdb; pdb.set_trace()
-                #   loss_fct = torch.nn.CrossEntropyLoss()
-                #   shift_logits = outputs.logits[..., :-1, :].contiguous()
-                #   shift_labels = batch['labels'][..., 1:].contiguous()
-                #   shift_logits = shift_logits.view(-1, model.config.vocab_size)
-                #   shift_labels = shift_labels.view(-1)
-                #   shift_labels = shift_labels.to(shift_logits.device)
-                #   loss_fct(shift_logits[:17], shift_labels[:17])
-                #   shift_logits[16].log_softmax(-1)[shift_labels[16]]
-                #   loss_fct(shift_logits[:18], shift_labels[:18])
-                #   shift_logits[17].log_softmax(-1)[shift_labels[17]]
+                labels = batch['labels'][:, 1:]
+                logits = outputs.logits[:, :-1]
+                mask = labels != -100
+                masked_labels = labels[mask]
+                logits = logits.view(-1, logits.size(-1))  # [bsz * seq_len, vocab_size]
+                masked_probs = logits[mask.view(-1)].softmax(-1)
+                # mask = batch['labels'][:, 1:] != -100
+                # masked_labels = batch['labels'][:, 1:][mask]
+                # logits = outputs.logits.view(-1, outputs.logits.size(-1))  # [bsz * seq_len, vocab_size]
+                # masked_probs = logits[mask.view(-1)].softmax(-1)
+                # find out which tokens are 0 and 1 in the tokenizer
+                zero_ind = tokenizer.convert_tokens_to_ids('0')
+                one_ind = tokenizer.convert_tokens_to_ids('1')
+                # we define the probability as the probability of the 1 token
+                batch_binary_labels = (masked_labels == one_ind).long()
+                batch_binary_probs = masked_probs[:, one_ind]
+                binary_probs.extend(batch_binary_probs.cpu().numpy())
+                binary_labels.extend(batch_binary_labels.cpu().numpy())
                 if train_config.save_metrics:
                     val_step_loss.append(loss.detach().float().item())
                     val_step_perplexity.append(float(torch.exp(loss.detach().float())))
@@ -397,6 +408,66 @@ def evaluation(model,train_config, eval_dataloader, local_rank, tokenizer, wandb
             print(f" {eval_ppl=} {eval_epoch_loss=}")
     else:
         print(f" {eval_ppl=} {eval_epoch_loss=}")
+
+    # CODE ADDED BY KEYON AND MODIFIED BY MATT AND CLAUDE
+    # Get sensitivity, precision, recall, F1 score
+    binary_labels = torch.tensor(binary_labels)
+    binary_probs = torch.tensor(binary_probs)
+    prob_deciles = torch.quantile(binary_probs, q=torch.linspace(0, 1, 11))
+    print(f"Prob_deciles: {prob_deciles}")
+
+    thresholds = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+
+    # Initialize lists to store metrics for each threshold
+    sensitivities = []
+    precisions = []
+    recalls = []
+    f1_scores = []
+
+    # Loop through each threshold
+    for threshold in thresholds:
+      # Create binary predictions based on the current threshold
+      print(f"First few values of binary_probs: {binary_probs[:5]}")
+      binary_preds = (binary_probs > threshold).long()
+      print(f"First few values of binary_preds: {binary_preds[:5]}")
+
+      # Calculate true positives, true negatives, false positives, and false negatives
+      tp = (binary_preds * binary_labels).sum().item()
+      tn = ((1 - binary_preds) * (1 - binary_labels)).sum().item()
+      fp = (binary_preds * (1 - binary_labels)).sum().item()
+      fn = ((1 - binary_preds) * binary_labels).sum().item()
+
+    
+      # Calculate metrics (adding a small epsilon to avoid division by zero)
+      epsilon = 1e-7
+      sensitivity = tp / (tp + fn + epsilon)
+      precision = tp / (tp + fp + epsilon)
+      recall = tp / (tp + fn + epsilon)  # Note: recall is the same as sensitivity
+      f1 = 2 * (precision * recall) / (precision + recall + epsilon)
+    
+      # Append metrics to their respective lists
+      sensitivities.append(sensitivity)
+      precisions.append(precision)
+      recalls.append(recall)
+      f1_scores.append(f1)
+
+    # If wandb is being used, log the metrics for each threshold
+    if wandb_run:
+      for i, threshold in enumerate(thresholds):
+          wandb_run.log({
+              f'eval/sensitivity_threshold_{threshold:.1f}': sensitivities[i],
+              f'eval/precision_threshold_{threshold:.1f}': precisions[i],
+              f'eval/recall_threshold_{threshold:.1f}': recalls[i],
+              f'eval/f1_threshold_{threshold:.1f}': f1_scores[i],
+          }, commit=False)
+    
+      # Log the best F1 score and its corresponding threshold
+      best_f1_index = np.argmax(f1_scores)
+      best_threshold = thresholds[best_f1_index]
+      wandb_run.log({
+          'eval/best_f1': f1_scores[best_f1_index],
+          'eval/best_threshold': best_threshold,
+      }, commit=False)
 
     if wandb_run:
         wandb_run.log({
