@@ -19,7 +19,7 @@ from tqdm import tqdm
 from transformers import LlamaTokenizer
 import json
 
-import numpy as np # ADDED BY MATT
+import numpy as np # ADDED BY MATT 2024-08-08
 
 from llama_recipes.model_checkpointing import save_model_checkpoint, save_model_and_optimizer_sharded, save_optimizer_checkpoint
 from llama_recipes.policies import fpSixteen,bfSixteen, get_llama_wrapper
@@ -409,9 +409,13 @@ def evaluation(model,train_config, eval_dataloader, local_rank, tokenizer, wandb
     else:
         print(f" {eval_ppl=} {eval_epoch_loss=}")
 
+    # CODE ADDED BY KEYON AND MODIFIED BY MATT AND CLAUDE
     # Get sensitivity, precision, recall, F1 score
     binary_labels = torch.tensor(binary_labels)
-    # CODE ADDED BY KEYON AND MODIFIED BY MATT AND CLAUDE
+    binary_probs = torch.tensor(binary_probs)
+    prob_deciles = torch.quantile(binary_probs, q=torch.linspace(0, 1, 11))
+    print(f"Prob_deciles: {prob_deciles}")
+
     thresholds = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
 
     # Initialize lists to store metrics for each threshold
@@ -423,20 +427,8 @@ def evaluation(model,train_config, eval_dataloader, local_rank, tokenizer, wandb
     # Loop through each threshold
     for threshold in thresholds:
       # Create binary predictions based on the current threshold
-
-      print(f"Type of binary_probs before conversion: {type(binary_probs)}")
-      print(f"Type of threshold: {type(threshold)}")
-
-      binary_probs = torch.tensor(binary_probs)
-
-      print(f"Type of binary_probs after conversion: {type(binary_probs)}")
-      print(f"Shape of binary_probs: {binary_probs.shape}")
       print(f"First few values of binary_probs: {binary_probs[:5]}")
-
       binary_preds = (binary_probs > threshold).long()
-
-      print(f"Type of binary_preds: {type(binary_preds)}")
-      print(f"Shape of binary_preds: {binary_preds.shape}")
       print(f"First few values of binary_preds: {binary_preds[:5]}")
 
       # Calculate true positives, true negatives, false positives, and false negatives
@@ -444,6 +436,7 @@ def evaluation(model,train_config, eval_dataloader, local_rank, tokenizer, wandb
       tn = ((1 - binary_preds) * (1 - binary_labels)).sum().item()
       fp = (binary_preds * (1 - binary_labels)).sum().item()
       fn = ((1 - binary_preds) * binary_labels).sum().item()
+
     
       # Calculate metrics (adding a small epsilon to avoid division by zero)
       epsilon = 1e-7
