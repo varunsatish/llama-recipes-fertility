@@ -198,7 +198,7 @@ Place this dataset in `llama-recipes-fertility/recipes/quickstart/finetuning/dat
 
 ```bash
  --dataset predefined_dataset
- --dataset_name <DATASET FILE NAME>
+ --data_path <PATH TO DATSET>
 ```
 
 

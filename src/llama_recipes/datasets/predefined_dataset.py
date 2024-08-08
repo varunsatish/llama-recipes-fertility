@@ -10,25 +10,16 @@ import numpy as np
 import pdb
 from itertools import product
 import json
+from datasets import load_dataset, load_from_disk
+
 
 # predefined datasets should come in dictionary format with "text" and "labels"
 
 def get_predefined_dataset(dataset_config, tokenizer, split):
 
-    # should be in json format
-    file_path = "datasets/predefined_datasets/" + dataset_config.dataset_name
+    # should be in HF format
 
-    with open(file_path, 'r') as file:
-        data_dict = json.load(file)
-
-    print("The columns in the dataset are: " + str(list(data_dict.keys())))
-
-    if "text" not in list(data_dict.keys()):
-        raise KeyError("The 'text' key is missing from the dictionary")
-    if "labels" not in list(data_dict.keys()):
-        raise KeyError("The 'labels' key is missing from the dictionary")
-
-    dataset = datasets.Dataset.from_dict(data_dict)
+    dataset = load_from_disk(dataset_config.data_path)
 
     prompt = (
         f"Predict 1 or 0:\n{{text}}\n---\nPrediction:\n"
