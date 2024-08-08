@@ -19,6 +19,7 @@ from tqdm import tqdm
 from transformers import LlamaTokenizer
 import json
 
+import numpy as np # ADDED BY MATT
 
 from llama_recipes.model_checkpointing import save_model_checkpoint, save_model_and_optimizer_sharded, save_optimizer_checkpoint
 from llama_recipes.policies import fpSixteen,bfSixteen, get_llama_wrapper
@@ -410,24 +411,75 @@ def evaluation(model,train_config, eval_dataloader, local_rank, tokenizer, wandb
 
     # Get sensitivity, precision, recall, F1 score
     binary_labels = torch.tensor(binary_labels)
-    binary_probs = torch.tensor(binary_probs)
-    binary_preds = (binary_probs > 0.5).long()
-    tp = (binary_preds * binary_labels).sum().item()
-    tn = ((1 - binary_preds) * (1 - binary_labels)).sum().item()
-    fp = (binary_preds * (1 - binary_labels)).sum().item()
-    fn = ((1 - binary_preds) * binary_labels).sum().item()
-    sensitivity = tp / (tp + fn + 1e-7)
-    precision = tp / (tp + fp + 1e-7)
-    recall = tp / (tp + fn + 1e-7)
-    f1 = 2 * (precision * recall) / (precision + recall + 1e-7)
+    # CODE ADDED BY KEYON AND MODIFIED BY MATT AND CLAUDE
+    thresholds = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+
+    # Initialize lists to store metrics for each threshold
+    sensitivities = []
+    precisions = []
+    recalls = []
+    f1_scores = []
+
+    # Loop through each threshold
+    for threshold in thresholds:
+      # Create binary predictions based on the current threshold
+
+      print(f"Type of binary_probs before conversion: {type(binary_probs)}")
+      print(f"Type of threshold: {type(threshold)}")
+
+      binary_probs = torch.tensor(binary_probs)
+
+      print(f"Type of binary_probs after conversion: {type(binary_probs)}")
+      print(f"Shape of binary_probs: {binary_probs.shape}")
+      print(f"First few values of binary_probs: {binary_probs[:5]}")
+
+      binary_preds = (binary_probs > threshold).long()
+
+      print(f"Type of binary_preds: {type(binary_preds)}")
+      print(f"Shape of binary_preds: {binary_preds.shape}")
+      print(f"First few values of binary_preds: {binary_preds[:5]}")
+
+      # Calculate true positives, true negatives, false positives, and false negatives
+      tp = (binary_preds * binary_labels).sum().item()
+      tn = ((1 - binary_preds) * (1 - binary_labels)).sum().item()
+      fp = (binary_preds * (1 - binary_labels)).sum().item()
+      fn = ((1 - binary_preds) * binary_labels).sum().item()
+    
+      # Calculate metrics (adding a small epsilon to avoid division by zero)
+      epsilon = 1e-7
+      sensitivity = tp / (tp + fn + epsilon)
+      precision = tp / (tp + fp + epsilon)
+      recall = tp / (tp + fn + epsilon)  # Note: recall is the same as sensitivity
+      f1 = 2 * (precision * recall) / (precision + recall + epsilon)
+    
+      # Append metrics to their respective lists
+      sensitivities.append(sensitivity)
+      precisions.append(precision)
+      recalls.append(recall)
+      f1_scores.append(f1)
+
+    # If wandb is being used, log the metrics for each threshold
+    if wandb_run:
+      for i, threshold in enumerate(thresholds):
+          wandb_run.log({
+              f'eval/sensitivity_threshold_{threshold:.1f}': sensitivities[i],
+              f'eval/precision_threshold_{threshold:.1f}': precisions[i],
+              f'eval/recall_threshold_{threshold:.1f}': recalls[i],
+              f'eval/f1_threshold_{threshold:.1f}': f1_scores[i],
+          }, commit=False)
+    
+      # Log the best F1 score and its corresponding threshold
+      best_f1_index = np.argmax(f1_scores)
+      best_threshold = thresholds[best_f1_index]
+      wandb_run.log({
+          'eval/best_f1': f1_scores[best_f1_index],
+          'eval/best_threshold': best_threshold,
+      }, commit=False)
+
     if wandb_run:
         wandb_run.log({
                         'eval/perplexity': eval_ppl,
                         'eval/loss': eval_epoch_loss,
-                        'eval/sensitivity': sensitivity,
-                        'eval/precision': precision,
-                        'eval/recall': recall,
-                        'eval/f1': f1,
                     }, commit=False)
 
     return eval_ppl, eval_epoch_loss, val_step_loss, val_step_perplexity
