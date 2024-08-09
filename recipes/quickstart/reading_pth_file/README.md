@@ -1,3 +1,1 @@
-The problem is that the `.from_pretrained()` suite of functions does not take in `.pth` files. 
-
-Even when I copied the config files into the `original/` directory, I was not able to read in the model weights. 
+This is a minimum working example of loading a model and tokenizer from the files contained in the `Meta-Llama-3.1-8B-Instruct/original/` directory. In order for the example to work, you need to copy `tokenizer.json` and `tokenizer_config.json` from the main directory.
