@@ -37,7 +37,7 @@ FSDP_CPU_RAM_EFFICIENT_LOADING=1 ACCELERATE_USE_FSDP=1 torchrun --nnodes 1  \
     --batch_size_training 1 --lr 0.0003  \
     --use_fast_kernels True --context_length 512  \
     --batching_strategy packing --mixed_precision False  \
-    --dataset minimum_working_example  \
+    --dataset example_BOL  \
     --use-wandb --wandb_config.name $NAME \
     --dist_backend nccl # don't use gloo unless for testing! 
 

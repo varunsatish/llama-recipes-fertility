@@ -10,16 +10,47 @@ import numpy as np
 import pdb
 from itertools import product
 import json
-from datasets import load_dataset, load_from_disk
+from datasets import load_dataset, load_from_disk, DatasetDict, concatenate_datasets
 
 
 # predefined datasets should come in dictionary format with "text" and "labels"
 
 def get_predefined_dataset(dataset_config, tokenizer, split):
 
-    # should be in HF format
+    ### Getting the right dataformat (Dataset, not DatasetDict)
 
-    dataset = load_from_disk(dataset_config.data_path)
+    dataset = load_dataset(dataset_config.data_path)
+
+    if isinstance(dataset, DatasetDict):
+        print("Original object is a DatasetDict")
+        print(f"Available splits: {list(dataset.keys())}")
+        
+        # Convert DatasetDict to Dataset by concatenating all splits
+        combined_dataset = concatenate_datasets(list(dataset.values()))
+        
+        print("\nConverted to a single Dataset")
+        print(f"Number of rows: {len(combined_dataset)}")
+        print(f"Features: {combined_dataset.features}")
+        print(f"Column names: {combined_dataset.column_names}")
+
+        dataset = combined_dataset
+
+    else:
+        print("The loaded object is already a Dataset")
+
+    
+    ### Changing column names to match underlying llama-recipes code
+
+    # Define the renaming operations
+    rename_operations = [
+        ('book_content', 'text'),
+        ('outcome', 'labels')
+    ]
+
+    # Perform the renaming
+    for old_name, new_name in rename_operations:
+        if old_name in dataset.column_names:
+            dataset = dataset.rename_column(old_name, new_name)
 
     prompt = (
         f"Predict 1 or 0:\n{{text}}\n---\nPrediction:\n"

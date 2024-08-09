@@ -37,7 +37,7 @@ FSDP_CPU_RAM_EFFICIENT_LOADING=1 ACCELERATE_USE_FSDP=1 torchrun --nnodes 1  \
     --use_fast_kernels True --context_length 512  \
     --batching_strategy packing --mixed_precision False  \
     --dataset predefined_dataset  \
-    --data_path finetuning/datasets/predefined_datasets/minimum_working_example \
+    --data_path finetuning/datasets/predefined_datasets/testing_BOL \
     --use-wandb 
 
 
