@@ -1,0 +1,61 @@
+2024-08-09 05:08:54,499 INFO    StreamThr :3148354 [internal.py:wandb_internal():85] W&B internal server running at pid: 3148354, started at: 2024-08-09 05:08:54.495941
+2024-08-09 05:08:54,503 DEBUG   HandlerThread:3148354 [handler.py:handle_request():158] handle_request: status
+2024-08-09 05:08:54,503 INFO    WriterThread:3148354 [datastore.py:open_for_write():87] open: /scratch/gpfs/vs3041/cruijff/llama-recipes-fertility/recipes/quickstart/wandb/offline-run-20240809_050854-e3pa1lmd/run-e3pa1lmd.wandb
+2024-08-09 05:08:54,548 DEBUG   HandlerThread:3148354 [handler.py:handle_request():158] handle_request: run_start
+2024-08-09 05:08:54,564 DEBUG   HandlerThread:3148354 [system_info.py:__init__():26] System info init
+2024-08-09 05:08:54,564 DEBUG   HandlerThread:3148354 [system_info.py:__init__():41] System info init done
+2024-08-09 05:08:54,564 INFO    HandlerThread:3148354 [system_monitor.py:start():194] Starting system monitor
+2024-08-09 05:08:54,564 INFO    SystemMonitor:3148354 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-08-09 05:08:54,564 INFO    HandlerThread:3148354 [system_monitor.py:probe():214] Collecting system info
+2024-08-09 05:08:54,572 INFO    SystemMonitor:3148354 [interfaces.py:start():188] Started cpu monitoring
+2024-08-09 05:08:54,573 INFO    SystemMonitor:3148354 [interfaces.py:start():188] Started disk monitoring
+2024-08-09 05:08:54,574 INFO    SystemMonitor:3148354 [interfaces.py:start():188] Started gpu monitoring
+2024-08-09 05:08:54,574 INFO    SystemMonitor:3148354 [interfaces.py:start():188] Started memory monitoring
+2024-08-09 05:08:54,574 INFO    SystemMonitor:3148354 [interfaces.py:start():188] Started network monitoring
+2024-08-09 05:08:54,592 DEBUG   HandlerThread:3148354 [system_info.py:probe():152] Probing system
+2024-08-09 05:08:54,594 DEBUG   HandlerThread:3148354 [system_info.py:_probe_git():137] Probing git
+2024-08-09 05:08:54,621 DEBUG   HandlerThread:3148354 [system_info.py:_probe_git():145] Probing git done
+2024-08-09 05:08:54,621 DEBUG   HandlerThread:3148354 [system_info.py:probe():200] Probing system done
+2024-08-09 05:08:54,621 DEBUG   HandlerThread:3148354 [system_monitor.py:probe():223] {'os': 'Linux-4.18.0-553.8.1.el8_10.x86_64-x86_64-with-glibc2.28', 'python': '3.11.7', 'heartbeatAt': '2024-08-09T09:08:54.592994', 'startedAt': '2024-08-09T09:08:54.491131', 'docker': None, 'cuda': None, 'args': ('--enable_fsdp', '--quantization', '4bit', '--model_name', 'original_models/Meta-Llama-3.1-8B-Instruct/', '--mixed_precision', 'False', '--low_cpu_fsdp', '--use_peft', '--peft_method', 'lora', '--output_dir', 'train_inf_output/multi_gpu_peft', '--num_epochs', '2', '--run_validation', 'True', '--batch_size_training', '1', '--lr', '0.0003', '--use_fast_kernels', 'True', '--context_length', '512', '--batching_strategy', 'packing', '--mixed_precision', 'False', '--dataset', 'predefined_dataset', '--data_path', 'finetuning/datasets/predefined_datasets/testing_BOL', '--use-wandb'), 'state': 'running', 'program': '/scratch/gpfs/vs3041/cruijff/llama-recipes-fertility/recipes/quickstart/finetuning/finetuning.py', 'codePathLocal': 'finetuning/finetuning.py', 'codePath': 'recipes/quickstart/finetuning/finetuning.py', 'git': {'remote': 'https://github.com/varunsatish/llama-recipes-fertility', 'commit': 'a865a631a11e1facf3535998269eed336194051a'}, 'email': 'varun.satish@princeton.edu', 'root': '/scratch/gpfs/vs3041/cruijff/llama-recipes-fertility', 'host': 'della-l04g8', 'username': 'vs3041', 'executable': '/home/vs3041/.cruijff/bin/python3', 'cpu_count': 48, 'cpu_count_logical': 48, 'cpu_freq': {'current': 3459.1925833333335, 'min': 3500.0, 'max': 3500.0}, 'cpu_freq_per_core': [{'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}, {'current': 3500.0, 'min': 3500.0, 'max': 3500.0}], 'disk': {'/': {'total': 149.130126953125, 'used': 99.83933639526367}}, 'gpu': 'NVIDIA A100 80GB PCIe', 'gpu_count': 4, 'gpu_devices': [{'name': 'NVIDIA A100 80GB PCIe', 'memory_total': 85899345920}, {'name': 'NVIDIA A100 80GB PCIe', 'memory_total': 85899345920}, {'name': 'NVIDIA A100 80GB PCIe', 'memory_total': 85899345920}, {'name': 'NVIDIA A100 80GB PCIe', 'memory_total': 85899345920}], 'memory': {'total': 1006.8473281860352}}
+2024-08-09 05:08:54,622 INFO    HandlerThread:3148354 [system_monitor.py:probe():224] Finished collecting system info
+2024-08-09 05:08:54,622 INFO    HandlerThread:3148354 [system_monitor.py:probe():227] Publishing system info
+2024-08-09 05:08:54,622 INFO    HandlerThread:3148354 [system_monitor.py:probe():229] Finished publishing system info
+2024-08-09 05:08:54,764 DEBUG   HandlerThread:3148354 [handler.py:handle_request():158] handle_request: python_packages
+2024-08-09 05:08:59,531 DEBUG   HandlerThread:3148354 [handler.py:handle_request():158] handle_request: status_report
+2024-08-09 05:08:59,540 DEBUG   SenderThread:3148354 [sender.py:send_request():406] send_request: status_report
+2024-08-09 05:09:04,561 DEBUG   HandlerThread:3148354 [handler.py:handle_request():158] handle_request: status_report
+2024-08-09 05:09:04,561 DEBUG   SenderThread:3148354 [sender.py:send_request():406] send_request: status_report
+2024-08-09 05:09:09,592 DEBUG   HandlerThread:3148354 [handler.py:handle_request():158] handle_request: status_report
+2024-08-09 05:09:09,592 DEBUG   SenderThread:3148354 [sender.py:send_request():406] send_request: status_report
+2024-08-09 05:09:14,624 DEBUG   HandlerThread:3148354 [handler.py:handle_request():158] handle_request: status_report
+2024-08-09 05:09:14,624 DEBUG   SenderThread:3148354 [sender.py:send_request():406] send_request: status_report
+2024-08-09 05:09:19,647 DEBUG   HandlerThread:3148354 [handler.py:handle_request():158] handle_request: status_report
+2024-08-09 05:09:19,647 DEBUG   SenderThread:3148354 [sender.py:send_request():406] send_request: status_report
+2024-08-09 05:09:24,691 DEBUG   HandlerThread:3148354 [handler.py:handle_request():158] handle_request: status_report
+2024-08-09 05:09:24,691 DEBUG   SenderThread:3148354 [sender.py:send_request():406] send_request: status_report
+2024-08-09 05:09:29,729 DEBUG   HandlerThread:3148354 [handler.py:handle_request():158] handle_request: status_report
+2024-08-09 05:09:29,729 DEBUG   SenderThread:3148354 [sender.py:send_request():406] send_request: status_report
+2024-08-09 05:09:30,043 DEBUG   HandlerThread:3148354 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-09 05:09:34,757 DEBUG   HandlerThread:3148354 [handler.py:handle_request():158] handle_request: status_report
+2024-08-09 05:09:34,757 DEBUG   SenderThread:3148354 [sender.py:send_request():406] send_request: status_report
+2024-08-09 05:09:39,775 DEBUG   HandlerThread:3148354 [handler.py:handle_request():158] handle_request: status_report
+2024-08-09 05:09:39,775 DEBUG   SenderThread:3148354 [sender.py:send_request():406] send_request: status_report
+2024-08-09 05:09:42,456 DEBUG   HandlerThread:3148354 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-09 05:09:44,805 DEBUG   HandlerThread:3148354 [handler.py:handle_request():158] handle_request: status_report
+2024-08-09 05:09:44,805 DEBUG   SenderThread:3148354 [sender.py:send_request():406] send_request: status_report
+2024-08-09 05:09:49,817 DEBUG   HandlerThread:3148354 [handler.py:handle_request():158] handle_request: status_report
+2024-08-09 05:09:49,817 DEBUG   SenderThread:3148354 [sender.py:send_request():406] send_request: status_report
+2024-08-09 05:09:54,264 DEBUG   HandlerThread:3148354 [handler.py:handle_request():158] handle_request: partial_history
+2024-08-09 05:09:54,578 DEBUG   SystemMonitor:3148354 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-08-09 05:09:54,844 DEBUG   HandlerThread:3148354 [handler.py:handle_request():158] handle_request: status_report
+2024-08-09 05:09:54,844 DEBUG   SenderThread:3148354 [sender.py:send_request():406] send_request: status_report
+2024-08-09 05:09:59,867 DEBUG   HandlerThread:3148354 [handler.py:handle_request():158] handle_request: status_report
+2024-08-09 05:09:59,867 DEBUG   SenderThread:3148354 [sender.py:send_request():406] send_request: status_report
+2024-08-09 05:10:04,909 DEBUG   HandlerThread:3148354 [handler.py:handle_request():158] handle_request: status_report
+2024-08-09 05:10:04,909 DEBUG   SenderThread:3148354 [sender.py:send_request():406] send_request: status_report
+2024-08-09 05:10:06,761 INFO    cpu       :3148354 [interfaces.py:monitor():138] Process cpu has exited.
+2024-08-09 05:10:06,762 DEBUG   SystemMonitor:3148354 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-08-09 05:10:06,762 DEBUG   SystemMonitor:3148354 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-08-09 05:10:07,845 WARNING StreamThr :3148354 [internal.py:is_dead():413] Internal process exiting, parent pid 3148298 disappeared
+2024-08-09 05:10:07,845 ERROR   StreamThr :3148354 [internal.py:wandb_internal():151] Internal process shutdown.
+2024-08-09 05:10:07,846 INFO    MainThread:3148354 [internal.py:handle_exit():75] Internal process exited

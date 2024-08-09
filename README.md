@@ -134,7 +134,7 @@ FSDP_CPU_RAM_EFFICIENT_LOADING=1 ACCELERATE_USE_FSDP=1 torchrun --nnodes 1  \
     --batching_strategy packing --mixed_precision False  \
     --dataset minimum_working_example  \
     --use-wandb --wandb_config.name $NAME \
-    --save_model --save_metrics
+    --save_model 
 ```
 
 ## Running the inference script
@@ -201,6 +201,34 @@ Place this dataset in `llama-recipes-fertility/recipes/quickstart/finetuning/dat
  --data_path <PATH TO DATSET>
 ```
 
+## Uploading requirements to OSSC via SURF
+
+1. Capturing changes to file structure and requirements:
+    - If requirements have changed (i.e. you have used pip install), then run in the directory `llama-recipes-fertility`, run:
+    ```bash
+    pip freeze > requirements.txt
+    ```
+    - Then, login to https://servicedesk.surf.nl/, create a ticket and tell SURF to install `requirements.txt` in `venvs/pmt/cruijff/`
+    - Ask them to put all wheelfiles in `/gpfs/ostor/ossc9469/homedir/venvs/pmt/cruijff/wheelfiles_cruijff/`
+    - Then, on the OSSC do:
+    ``` bash
+    WHEELPATH="/gpfs/ostor/ossc9469/homedir/venvs/pmt/cruijff/wheelfiles_cruijff/" 
+    cd ~
+    module load 2023
+    Python/3.11.3-GCCcore-12.3.0 
+    source venvs/pmt/cruijff/bin/activate
+    cd PreFer/pmt/repositories/llama-recipes
+    pip install -e ./ --no-index --find-links $WHEELPATH
+    ```
+
+2. Pushing to GitHub
+    - Commit and push all changes to this repo.
+    - In GitHub, create a release that includes the date of shipment. For example, “Shipped to CBS August 5th”. 
+    - Make sure you also create a tag that follows [semantic versioning](https://semver.org/)
+
+3. Sending code to CBS 
+
+    - via https://databestanden.cbs.nl with your personal login details
 
 
 ## Fine-tune with PEFT on a single GPU
