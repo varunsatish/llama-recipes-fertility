@@ -51,3 +51,4 @@ class train_config:
     use_profiler: bool = False # Enable pytorch profiler, can not be used with flop counter at the same time.
     profiler_dir: str = "PATH/to/save/profiler/results" # will be used if using profiler
     dist_backend: str = "nccl"
+    logging_steps: int = 100   # by default, run evaluation every 100 steps
