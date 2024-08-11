@@ -50,9 +50,40 @@ model_path = "original_models/Meta-Llama-3.1-8B-Instruct/"
 # print("model loaded!")
 
 # Make sure model is generating reasonable sequences
-tokenizer = AutoTokenizer.from_pretrained(model_path + "original/", use_fast=False)
-prompt = "Hey, are you conscious? Can you talk to me?"
+#tokenizer = AutoTokenizer.from_pretrained(model_path + "original/", use_fast=False)
 
+# tokenizer with files that were in the /original/ directory
+
+try:
+    # Your code that might raise an exception goes here
+    # For example:
+    tokenizer = AutoTokenizer.from_pretrained("reading_pth_file/tokenizer_files/without_jsons")
+    
+    print("just tokenizer.model worked")
+except Exception as e:
+    print(f"An error occurred without copying files: {e}")
+
+# after copying tokenizer_config.json and tokenizer.json from the main directory 
+try:
+    tokenizer = AutoTokenizer.from_pretrained("reading_pth_file/tokenizer_files/with_jsons")
+    
+    print("Copying files worked")
+except Exception as e:
+    print(f"An error occurred with copying files: {e}")
+
+# trying another method to read the tokenizer
+import sentencepiece as spm
+sp = spm.SentencePieceProcessor()
+
+try:
+    sp.load("reading_pth_file/tokenizer_files/without_jsons/tokenizer.model")
+except Exception as e:
+    print(f"An error occurred using SentencePiece: {e}")
+
+
+
+# Testing tokenizer is working as expected
+# prompt = "Hey, are you conscious? Can you talk to me?"
 # inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
 # generate_ids = model.generate(inputs.input_ids, max_length=30)
 # tokenizer.batch_decode(generate_ids, skip_special_tokens=True, clean_up_tokenization_spaces=False)[0]
