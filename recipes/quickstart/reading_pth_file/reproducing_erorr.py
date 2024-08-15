@@ -7,8 +7,8 @@ from collections import OrderedDict
 # # ### New code:
 model_path = "original_models/Meta-Llama-3.1-8B-Instruct/"
 
-config = AutoConfig.from_pretrained(model_path, config_file="config.json")
-model = AutoModelForCausalLM.from_config(config)
+config = LlamaConfig.from_pretrained(train_config.model_name, config_file="config.json")
+model = LlamaForCausalLM(config)
 
 state_dict = torch.load(model_path + "original/consolidated.00.pth", map_location="cpu")
 
