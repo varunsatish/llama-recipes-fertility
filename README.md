@@ -87,7 +87,7 @@ You will first need to initialize an interactive slurm job.
 In Snellius, the command is:
 
 ```bash
-salloc --nodes=1 --ntasks-per-node=1 --p gpu --time=60:00 --mem=480G
+salloc --nodes=1 --ntasks-per-node=1 --partition gpu --time=60:00 --mem=480G
 ```
 
 and in Della, the command is:
